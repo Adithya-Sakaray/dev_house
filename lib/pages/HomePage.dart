@@ -24,40 +24,31 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       _selectedIndex = index;
     });
-    switch (_selectedIndex) {
-      case 0:
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context) => const ProjectsPage()),
-        );
-        break;
-      case 1:
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context) => const JobsPage()),
-        );
-        break;
-      case 2:
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context) => const EventsPage()),
-        );
-        break;
-      case 3:
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context) => const ProfilePage()),
-        );
-        break;
-    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: app(context),
-      drawer: draw(context),
-      body: const FeedPage(),
+      appBar: app(
+        context,
+        _selectedIndex,
+      ),
+      drawer: _selectedIndex == 0
+          ? draw(
+              context,
+            )
+          : null,
+      body: _selectedIndex == 0
+          ? const FeedPage()
+          : _selectedIndex == 1
+              ? const ProjectsPage()
+              : _selectedIndex == 2
+                  ? const JobsPage()
+                  : _selectedIndex == 3
+                      ? const EventsPage()
+                      : _selectedIndex == 4
+                          ? const ProfilePage()
+                          : Container(),
       bottomNavigationBar: BottomNavBar(
         selectedIndex: _selectedIndex,
         selectedColor: _selectedColor,
@@ -85,7 +76,7 @@ class _HomePageState extends State<HomePage> {
                   height: 28,
                   width: 28,
                   child: Image.asset(
-                    "assets/pen1.png",
+                    "assets/icons/floating.png",
                     color: const Color.fromARGB(255, 248, 245, 245),
                   ),
                 ),

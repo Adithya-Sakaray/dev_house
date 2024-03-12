@@ -1,4 +1,3 @@
-import 'package:dev_house/widgets/appBar.dart';
 import 'package:flutter/material.dart';
 
 class JobsPage extends StatelessWidget {
@@ -6,9 +5,8 @@ class JobsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: app(context),
-      body: const Center(
+    return const Scaffold(
+      body: Center(
         child: Text('Jobs Page'),
       ),
     );

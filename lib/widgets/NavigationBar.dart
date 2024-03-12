@@ -25,8 +25,10 @@ class BottomNavBar extends StatelessWidget {
             height: 25,
             width: 25,
             child: selectedIndex == 0
-                ? Image.asset("assets/ff.png", color: selectedColor)
-                : Image.asset("assets/fo.png", color: Colors.grey.shade900),
+                ? Image.asset("assets/icons/navigation/ff.png",
+                    color: selectedColor)
+                : Image.asset("assets/icons/navigation/fo.png",
+                    color: Colors.grey.shade900),
           ),
           label: 'Feed',
         ),
@@ -35,8 +37,10 @@ class BottomNavBar extends StatelessWidget {
             height: 30,
             width: 28,
             child: selectedIndex == 1
-                ? Image.asset("assets/pf.png", color: selectedColor)
-                : Image.asset("assets/po.png", color: Colors.grey.shade900),
+                ? Image.asset("assets/icons/navigation/pf.png",
+                    color: selectedColor)
+                : Image.asset("assets/icons/navigation/po.png",
+                    color: Colors.grey.shade900),
           ),
           label: 'Projects',
         ),
@@ -45,8 +49,10 @@ class BottomNavBar extends StatelessWidget {
             height: 30,
             width: 28,
             child: selectedIndex == 2
-                ? Image.asset("assets/jf.png", color: selectedColor)
-                : Image.asset("assets/jo.png", color: Colors.grey.shade900),
+                ? Image.asset("assets/icons/navigation/jf.png",
+                    color: selectedColor)
+                : Image.asset("assets/icons/navigation/jo.png",
+                    color: Colors.grey.shade900),
           ),
           label: 'Jobs',
         ),
@@ -55,8 +61,10 @@ class BottomNavBar extends StatelessWidget {
             height: 30,
             width: 28,
             child: selectedIndex == 3
-                ? Image.asset("assets/ef.png", color: selectedColor)
-                : Image.asset("assets/eo.png", color: Colors.grey.shade900),
+                ? Image.asset("assets/icons/navigation/ef.png",
+                    color: selectedColor)
+                : Image.asset("assets/icons/navigation/eo.png",
+                    color: Colors.grey.shade900),
           ),
           label: 'Events',
         ),
@@ -73,13 +81,13 @@ class BottomNavBar extends StatelessWidget {
                         width: 2.0,
                       ),
                     ),
-                    child: Image.asset("assets/p1.png"),
+                    child: Image.asset("assets/icons/navigation/p.png"),
                   ),
                 )
               : SizedBox(
                   height: 30,
                   width: 36,
-                  child: Image.asset("assets/p1.png"),
+                  child: Image.asset("assets/icons/navigation/p.png"),
                 ),
           label: 'Profile',
         ),
