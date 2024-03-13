@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../video.dart';
+import 'video.dart';
 
 class feeds_f extends StatefulWidget {
   const feeds_f({super.key});

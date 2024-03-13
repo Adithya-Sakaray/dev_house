@@ -1,7 +1,10 @@
 // ignore_for_file: must_be_immutable
 import 'dart:async';
+import 'package:dev_house/widgets/feeds/views.dart';
 import 'package:flutter/material.dart';
-import '../video.dart';
+import 'video.dart';
+import 'menu.dart';
+// import 'FeedActionsDialog.dart';
 
 class feeds_l extends StatefulWidget {
   const feeds_l({super.key});
@@ -16,10 +19,10 @@ class _feeds_lState extends State<feeds_l> {
   bool likeb = false;
   bool dislikeb = false;
   bool saveb = false;
-  int like = 4;
+  int like = 0;
   int dislike = 0;
   int views = 0;
-
+  int comments = 3;
   @override
   void initState() {
     super.initState();
@@ -50,6 +53,7 @@ class _feeds_lState extends State<feeds_l> {
                 like: like,
                 dislike: dislike,
                 saveb: saveb,
+                comments: comments,
               ),
               // const Divider(),
             ],
@@ -74,6 +78,8 @@ class BuildPost extends StatefulWidget {
   int like;
   int dislike;
   int views;
+  int comments;
+
   bool saveb; // Change here
 
   BuildPost({
@@ -92,6 +98,7 @@ class BuildPost extends StatefulWidget {
     required this.saveb,
     required this.likeb, // Change here
     required this.dislikeb,
+    required this.comments,
   }) : super(key: key);
 
   @override
@@ -102,10 +109,8 @@ class _BuildPostState extends State<BuildPost> {
   bool _showAnimatedIconl = false;
   bool _showAnimatedIcons = false;
   bool showFullPost = false;
-
   bool hasLiked = false; // Track if the post has been liked
   bool hasDisliked = false;
-
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -178,7 +183,8 @@ class _BuildPostState extends State<BuildPost> {
                     IconButton(
                       icon: const Icon(Icons.more_vert),
                       onPressed: () {
-                        // Open menu
+                        // Open bottom sheet menu
+                        _menuBottomSheet(context);
                       },
                     ),
                   ],
@@ -218,9 +224,7 @@ class _BuildPostState extends State<BuildPost> {
                                 widget.likeb = !widget.likeb;
 
                                 // If the like button is now selected, ensure dislike button is deselected
-                                if (widget.likeb) {
-                                  widget.dislikeb = false;
-                                }
+
                                 if (!hasLiked) {
                                   // Increment the like count and mark the post as liked
                                   widget.like++;
@@ -275,8 +279,15 @@ class _BuildPostState extends State<BuildPost> {
                                                   255, 7, 42, 240),
                                             ),
                                   const SizedBox(width: 4),
-                                  Text(widget.like.toString(),
-                                      style: const TextStyle(fontSize: 14)),
+                                  widget.like == 0
+                                      ? const Text(
+                                          "Like",
+                                          style: TextStyle(fontSize: 14),
+                                        )
+                                      : Text(
+                                          widget.like.toString(),
+                                          style: const TextStyle(fontSize: 14),
+                                        ),
                                 ],
                               ),
                             ),
@@ -284,52 +295,59 @@ class _BuildPostState extends State<BuildPost> {
                           const SizedBox(
                             width: 16,
                           ), // Spacing between likeb and dislikeb
+
                           GestureDetector(
                             onTap: () {
-                              setState(() {
-                                // Toggle the dislike button
-                                widget.dislikeb = !widget.dislikeb;
-
-                                // If the dislike button is now selected, ensure like button is deselected
-                                if (widget.dislikeb) {
-                                  widget.likeb = false;
-                                }
-                              });
+                              print("comment");
                             },
-                            child: widget.dislikeb == false
-                                ? Image.asset(
-                                    "assets/icons/dlike_b.png",
-                                    height: 20,
-                                    width: 20,
-                                  )
-                                : Image.asset(
-                                    "assets/icons/dlike_a.png",
-                                    height: 20,
-                                    width: 20,
-                                    color:
-                                        const Color.fromARGB(255, 7, 42, 240),
-                                  ),
+                            child: Image.asset(
+                              "assets/icons/comment.png",
+                              height: 21.5,
+                              width: 21.5,
+                            ),
                           ),
-
+                          const SizedBox(width: 4),
+                          Text(
+                            widget.comments.toString(),
+                            style: const TextStyle(fontSize: 14),
+                          ),
                           const SizedBox(
-                              width: 16), // Spacing between dislikeb and share
-                          const Icon(Icons.share, size: 20),
-
+                              width: 12), // Spacing between dislikeb and share
+                          GestureDetector(
+                            onTap: () {
+                              print("he");
+                            },
+                            child: Image.asset(
+                              "assets/icons/share.png",
+                              height: 24,
+                              width: 24,
+                            ),
+                          ),
                           const Spacer(),
                           Row(
                             children: [
                               // const Icon(Icons.visibility, size: 18),
-                              Image.asset(
-                                "assets/icons/views.png",
-                                height: 20,
-                                width: 20,
+                              GestureDetector(
+                                onTap: () {
+                                  _showViewsBottomSheet(context);
+                                },
+                                child: Row(
+                                  children: [
+                                    Image.asset(
+                                      "assets/icons/views.png",
+                                      height: 20,
+                                      width: 20,
+                                    ),
+                                    const SizedBox(width: 4),
+                                    const Padding(
+                                      padding: EdgeInsets.only(top: 2.5),
+                                      child: Text('100',
+                                          style: TextStyle(fontSize: 14)),
+                                    ),
+                                  ],
+                                ),
                               ),
-                              const SizedBox(width: 4),
-                              const Padding(
-                                padding: EdgeInsets.only(top: 2.5),
-                                child:
-                                    Text('100', style: TextStyle(fontSize: 14)),
-                              ),
+
                               const SizedBox(
                                 width: 13.5,
                               ), // Spacing between views and save
@@ -487,4 +505,29 @@ class _BuildPostState extends State<BuildPost> {
       return '${widget.text!.substring(0, maxCharactersToShow)}... see more';
     }
   }
+}
+
+void _showViewsBottomSheet(BuildContext context) {
+  showModalBottomSheet(
+    context: context,
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.vertical(top: Radius.circular(15)),
+    ),
+    builder: (BuildContext context) {
+      return const ViewsBottomSheet();
+    },
+  );
+}
+
+void _menuBottomSheet(BuildContext context) {
+  showModalBottomSheet(
+    context: context,
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.vertical(top: Radius.circular(15)),
+    ),
+    backgroundColor: const Color.fromARGB(255, 253, 249, 249),
+    builder: (BuildContext context) {
+      return const MenuBottomSheet();
+    },
+  );
 }

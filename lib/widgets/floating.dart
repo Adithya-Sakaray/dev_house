@@ -1,6 +1,6 @@
-import "package:dev_house/widgets/newGroup.dart";
+import "package:dev_house/widgets/groups/newGroup.dart";
 import "package:dev_house/widgets/newJob.dart";
-import "package:dev_house/widgets/newPost.dart";
+import "package:dev_house/widgets/feeds/newPost.dart";
 import "package:flutter/material.dart";
 
 Container float(
