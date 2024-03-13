@@ -13,7 +13,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(fontFamily: 'Poppins'),
+      theme: ThemeData(
+        fontFamily: 'Poppins',
+        appBarTheme: const AppBarTheme(
+          color: Colors.white, // Set the background color of the app bar
+          // Define other app bar styles here
+        ),
+      ),
       title: 'Job Portal',
       home: const HomePage(),
     );
