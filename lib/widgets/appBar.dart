@@ -13,21 +13,21 @@ AppBar app(BuildContext context, int selectedIndex) {
           )
         : selectedIndex == 1
             ? const Text(
-                'Projects',
+                ' Projects',
                 style: TextStyle(fontWeight: FontWeight.w600),
               )
             : selectedIndex == 2
                 ? const Text(
-                    'Jobs',
+                    ' Jobs',
                     style: TextStyle(fontWeight: FontWeight.w600),
                   )
                 : selectedIndex == 3
                     ? const Text(
-                        'Events',
+                        ' Events',
                         style: TextStyle(fontWeight: FontWeight.w600),
                       )
                     : const Text(
-                        'Profile',
+                        ' Profile',
                         style: TextStyle(fontWeight: FontWeight.w600),
                       ),
     actions: [

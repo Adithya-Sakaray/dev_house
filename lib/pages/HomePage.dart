@@ -50,7 +50,13 @@ class _HomePageState extends State<HomePage> {
           : _selectedNavIndex == 1
               ? const ProjectsPage()
               : _selectedNavIndex == 2
-                  ? const JobsPage()
+                  ? JobsPage(
+                      onTabIndexChange: (index) {
+                        setState(() {
+                          _selectedTabIndex = index;
+                        });
+                      },
+                    )
                   : _selectedNavIndex == 3
                       ? const EventsPage()
                       : _selectedNavIndex == 4

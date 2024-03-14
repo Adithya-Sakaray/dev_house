@@ -1,7 +1,7 @@
 import 'package:dev_house/widgets/feeds/feeds_f.dart';
 import 'package:dev_house/widgets/feeds/feeds_l.dart';
 import 'package:dev_house/widgets/feeds/feeds_t.dart';
-import 'package:dev_house/widgets/groups/customTile.dart';
+import 'package:dev_house/widgets/groups/customTile_G.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
@@ -223,7 +223,7 @@ class _FeedPageState extends State<FeedPage> {
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(20.0),
                                   ),
-                                  minimumSize: const Size(0, 32),
+                                  minimumSize: const Size(0, 35),
                                   elevation: 0, // Remove the elevation shadow
                                 ),
                                 child: const Text(
@@ -269,7 +269,7 @@ class _FeedPageState extends State<FeedPage> {
                                 child: ListView.builder(
                                   itemCount: 15,
                                   itemBuilder: (context, index) {
-                                    return CustomTile(
+                                    return CustomTile_G(
                                       title: 'Design',
                                       subtitle: '34554' " members",
                                       description:
@@ -286,7 +286,7 @@ class _FeedPageState extends State<FeedPage> {
                                 child: ListView.builder(
                                   itemCount: 4,
                                   itemBuilder: (context, index) {
-                                    return CustomTile(
+                                    return CustomTile_G(
                                       title: 'Finance',
                                       subtitle: '2354' " members",
                                       description:

@@ -2,13 +2,13 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-class CustomTile extends StatefulWidget {
+class CustomTile_J extends StatefulWidget {
   final String title;
   final String subtitle;
   final String description;
   final VoidCallback onPressed;
 
-  const CustomTile({
+  const CustomTile_J({
     Key? key,
     required this.title,
     required this.subtitle,
@@ -20,7 +20,7 @@ class CustomTile extends StatefulWidget {
   _CustomTileState createState() => _CustomTileState();
 }
 
-class _CustomTileState extends State<CustomTile> {
+class _CustomTileState extends State<CustomTile_J> {
   bool showFullDescription = false;
   late Color randomColor;
 

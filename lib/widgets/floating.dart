@@ -1,5 +1,5 @@
 import "package:dev_house/widgets/groups/newGroup.dart";
-import "package:dev_house/widgets/newJob.dart";
+import "package:dev_house/widgets/jobs/newJob.dart";
 import "package:dev_house/widgets/feeds/newPost.dart";
 import "package:flutter/material.dart";
 
