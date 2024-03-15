@@ -10,26 +10,17 @@ class AboutMeContainer extends StatelessWidget {
           color: Colors.grey.shade200,
           borderRadius: BorderRadius.circular(15)
       ),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
+      child: const Padding(
+        padding: EdgeInsets.all(8.0),
         child: Column(
           children: [
 
-            Row(
-              children: [
-                Icon(Icons.location_on_outlined,),
-                SizedBox(width: 18,),
-                Text("Location")
-              ],
-            ),
-
-            SizedBox(height: 10,),
 
             Row(
               children: [
-                Icon(Icons.date_range,),
+                Icon(Icons.mail,),
                 SizedBox(width: 18,),
-                Text("12/12/2000")
+                Text("email@gmail.com")
               ],
             ),
 

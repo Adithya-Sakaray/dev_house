@@ -46,35 +46,12 @@ AppBar app(BuildContext context, int selectedIndex) {
               },
             )
           : const SizedBox.shrink(),
+
       selectedIndex == 4
           ? IconButton(
-              icon: SizedBox(
-                height: 24,
-                width: 24,
-                child: Image.asset("assets/icons/app_bar/search.png"),
-              ),
-              onPressed: () {},
-            )
-          : IconButton(
-              icon: SizedBox(
-                height: 24,
-                width: 24,
-                child: Image.asset("assets/icons/app_bar/notification.png"),
-              ),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const NotificationScreen()),
-                );
-              },
-            ),
-      selectedIndex == 4
-          ? IconButton(
-              icon: SizedBox(
-                height: 25,
-                width: 24,
-                child: Image.asset("assets/icons/app_bar/search.png"),
+              icon: const Padding(
+                padding: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
+                child: Icon(Icons.logout, size: 25, color: Colors.black,),
               ),
               onPressed: () {},
             )

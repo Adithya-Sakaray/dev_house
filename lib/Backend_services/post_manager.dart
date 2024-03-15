@@ -3,6 +3,7 @@ import 'package:http/http.dart' as http;
 
 import '../Models/PostModel.dart';
 
+
 class PostsManager {
 
   static Future<List<Post>> fetchPostsByType(String userType) async {

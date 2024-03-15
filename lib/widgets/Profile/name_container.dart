@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 
 class ProfileNameContainer extends StatelessWidget {
   final String userName;
+  final IconData icon;
+  final String role;
   const ProfileNameContainer({
-    super.key, required this.userName});
+    super.key, required this.userName, required this.icon, required this.role});
 
   @override
   Widget build(BuildContext context) {
@@ -17,8 +19,8 @@ class ProfileNameContainer extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            const Icon(
-                Icons.account_circle_outlined,
+             Icon(
+                icon,
               size: 50,
             ),
 
@@ -28,6 +30,24 @@ class ProfileNameContainer extends StatelessWidget {
               userName,
               style: const TextStyle(
                 fontSize: 28
+              ),
+            ),
+
+            Spacer(),
+            
+            Padding(
+              padding: const EdgeInsets.only(right: 8.0),
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  border: Border.all(
+                    color: Colors.black,
+                  )
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 6),
+                  child: Text(role),
+                ),
               ),
             )
           ],
