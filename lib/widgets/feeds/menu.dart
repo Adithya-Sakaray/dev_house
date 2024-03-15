@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:share/share.dart';
 
-import 'dont_rec.dart';
+import 'dont_recommend.dart';
 import 'report.dart';
 
 class MenuBottomSheet extends StatefulWidget {

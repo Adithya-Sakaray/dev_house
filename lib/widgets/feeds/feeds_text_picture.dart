@@ -1,23 +1,20 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import '../../pages/GroupDetail.dart';
-import '../../pages/OthersProfile.dart';
-import '../../pages/SharePost.dart';
+import '../../screens/group_detail_screen.dart';
+import '../../screens/others_profile_screen.dart';
+import '../../screens/share_post_screen.dart';
 import 'menu.dart';
-import 'video.dart';
 import 'views.dart';
 
-class feeds_f extends StatefulWidget {
-  const feeds_f({super.key});
+class feeds_t extends StatefulWidget {
+  const feeds_t({super.key});
 
   @override
-  _feeds_fState createState() => _feeds_fState();
+  _feeds_tState createState() => _feeds_tState();
 }
 
-class _feeds_fState extends State<feeds_f> {
-  late ScrollController _scrollController;
-  late List<bool> _isVideoPlayed;
+class _feeds_tState extends State<feeds_t> {
   bool likeb = false;
   bool dislikeb = false;
   bool saveb = false;
@@ -27,30 +24,19 @@ class _feeds_fState extends State<feeds_f> {
   int comments = 3;
 
   @override
-  void initState() {
-    super.initState();
-    _scrollController = ScrollController();
-    _isVideoPlayed = List.generate(3, (index) => false);
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Expanded(
       child: ListView.builder(
-        controller: _scrollController,
         itemCount: 3,
         itemBuilder: (BuildContext context, int index) {
           return Column(
             children: [
               BuildPost(
                 context: context, // Pass context here
-                type: 'textAndVideo',
+                type: 'textAndPhoto',
                 text:
                     'Wrapping up an unforgettable chapter at VIT Chennai with the grand finale of Vibrance\'24! 🎭 It\'s bittersweet bidding adieu to this cultural extravaganza, especially as it marks my final Vibrance as an organizer. The journey has been nothing short of incredible, filled with emotions as we wrapped up on a high note.',
-
-                videoUrl: 'assets/images/video.mp4',
-                scrollController: _scrollController,
-                isVideoPlayed: _isVideoPlayed,
+                imageUrl: 'assets/images/link.jpeg',
                 index: index,
                 likeb: likeb,
                 dislikeb: dislikeb,
@@ -78,9 +64,7 @@ class BuildPost extends StatefulWidget {
   final BuildContext context;
   final String? type;
   final String? text;
-  final String? videoUrl;
-  final ScrollController scrollController;
-  final List<bool> isVideoPlayed;
+  final String? imageUrl;
   final int index;
   bool likeb; // Change here
   bool dislikeb;
@@ -96,9 +80,7 @@ class BuildPost extends StatefulWidget {
     required this.context,
     required this.type,
     this.text,
-    this.videoUrl,
-    required this.scrollController,
-    required this.isVideoPlayed,
+    required this.imageUrl,
     required this.index,
     required this.like,
     required this.dislike,
@@ -143,15 +125,6 @@ class _BuildPostState extends State<BuildPost> {
         });
       });
     });
-  }
-
-  String _getDisplayFullPost() {
-    const maxCharactersToShow = 300;
-    if (widget.text!.length <= maxCharactersToShow) {
-      return widget.text!;
-    } else {
-      return '${widget.text!.substring(0, maxCharactersToShow)}... see more';
-    }
   }
 
   @override
@@ -283,41 +256,43 @@ class _BuildPostState extends State<BuildPost> {
               ),
             ),
           ),
-          if (widget.type == 'textAndVideo')
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Container(
-                  color: Colors.grey[100],
-                  padding: const EdgeInsets.only(
-                    top: 14.0,
-                    // bottom: 0, //change
-                    left: 13.5,
-                    right: 13.5,
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            showFullPost = !showFullPost;
-                          });
-                        },
-                        onDoubleTap: () {
-                          doubleTap();
-                        },
-                        child: Text(
-                          showFullPost ? widget.text! : _getDisplayFullPost(),
-                          style: const TextStyle(fontSize: 14.5),
+          if (widget.type == 'textAndPhoto')
+            GestureDetector(
+              onDoubleTap: () {
+                doubleTap();
+              },
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Container(
+                    color: Colors.grey[100],
+                    padding: const EdgeInsets.only(
+                      top: 14.0,
+                      // bottom: 0, //change
+                      left: 13.5,
+                      right: 13.5,
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              showFullPost = !showFullPost;
+                            });
+                          },
+                          child: Text(
+                            showFullPost ? widget.text! : _getDisplayFullPost(),
+                            style: const TextStyle(fontSize: 14.5),
+                          ),
                         ),
-                      ),
-                      const SizedBox(height: 14),
-                    ],
+                        const SizedBox(height: 14),
+                      ],
+                    ),
                   ),
-                ),
-                const VideoPlayerWidget(videoPath: "assets/images/video.mp4"),
-              ],
+                  Image.asset(widget.imageUrl!),
+                ],
+              ),
             ),
           Container(
             color: Colors.white,
@@ -375,7 +350,7 @@ class _BuildPostState extends State<BuildPost> {
                           children: [
                             _showAnimatedIconl && widget.likeb == true
                                 ? Image.asset(
-                                    "assets/icons/like_o.gif",
+                                    "assets/icons/feed/like_o.gif",
                                     height: 20,
                                     width: 20,
                                     color:
@@ -383,12 +358,12 @@ class _BuildPostState extends State<BuildPost> {
                                   )
                                 : widget.likeb == false
                                     ? Image.asset(
-                                        "assets/icons/like_b.png",
+                                        "assets/icons/feed/like_b.png",
                                         height: 20,
                                         width: 20,
                                       )
                                     : Image.asset(
-                                        "assets/icons/like_a.png",
+                                        "assets/icons/feed/like_a.png",
                                         height: 20,
                                         width: 20,
                                         color: const Color.fromARGB(
@@ -441,7 +416,7 @@ class _BuildPostState extends State<BuildPost> {
                         });
                       },
                       child: Image.asset(
-                        "assets/icons/share.png",
+                        "assets/icons/feeds/share.png",
                         height: 24,
                         width: 24,
                       ),
@@ -457,7 +432,7 @@ class _BuildPostState extends State<BuildPost> {
                           child: Row(
                             children: [
                               Image.asset(
-                                "assets/icons/views.png",
+                                "assets/icons/feeds/views.png",
                                 height: 20,
                                 width: 20,
                               ),
@@ -489,18 +464,18 @@ class _BuildPostState extends State<BuildPost> {
                           },
                           child: _showAnimatedIcons && widget.saveb == true
                               ? Image.asset(
-                                  "assets/icons/save_o.gif",
+                                  "assets/icons/feeds/save_o.gif",
                                   height: 20,
                                   width: 20,
                                 )
                               : widget.saveb == false
                                   ? Image.asset(
-                                      "assets/icons/save_b.png",
+                                      "assets/icons/feeds/save_b.png",
                                       height: 20,
                                       width: 20,
                                     )
                                   : Image.asset(
-                                      "assets/icons/save_a.png",
+                                      "assets/icons/feeds/save_a.png",
                                       height: 20,
                                       width: 20,
                                     ),
@@ -515,6 +490,15 @@ class _BuildPostState extends State<BuildPost> {
         ],
       ),
     );
+  }
+
+  String _getDisplayFullPost() {
+    const maxCharactersToShow = 300;
+    if (widget.text!.length <= maxCharactersToShow) {
+      return widget.text!;
+    } else {
+      return '${widget.text!.substring(0, maxCharactersToShow)}... see more';
+    }
   }
 }
 

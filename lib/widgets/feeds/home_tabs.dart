@@ -1,6 +1,6 @@
-import 'package:dev_house/widgets/feeds/feeds_f.dart';
-import 'package:dev_house/widgets/feeds/feeds_l.dart';
-import 'package:dev_house/widgets/feeds/feeds_t.dart';
+import 'package:dev_house/widgets/feeds/feeds_text_video.dart';
+import 'package:dev_house/widgets/feeds/feeds_text.dart';
+import 'package:dev_house/widgets/feeds/feeds_text_picture.dart';
 import 'package:dev_house/widgets/groups/customTile_G.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';

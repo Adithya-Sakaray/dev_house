@@ -188,7 +188,7 @@ class _JobDetailState extends State<JobDetail> {
                     child: Column(
                       children: [
                         Image.asset(
-                          "assets/icons/wal.png",
+                          "assets/icons/job_tile/wal.png",
                           height: 20,
                           width: 20,
                           color: Colors.black,
@@ -216,7 +216,7 @@ class _JobDetailState extends State<JobDetail> {
                   Column(
                     children: [
                       Image.asset(
-                        "assets/icons/int.png",
+                        "assets/icons/job_tile/int.png",
                         height: 20,
                         width: 20,
                         color: Colors.black,
@@ -243,7 +243,7 @@ class _JobDetailState extends State<JobDetail> {
                   Column(
                     children: [
                       Image.asset(
-                        "assets/icons/loc.png",
+                        "assets/icons/job_tile/loc.png",
                         height: 20,
                         width: 20,
                         color: Colors.black,

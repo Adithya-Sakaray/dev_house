@@ -1,20 +1,20 @@
+// ignore_for_file: must_be_immutable
 import 'dart:async';
-
+import 'package:dev_house/screens/group_detail_screen.dart';
+import 'package:dev_house/screens/others_profile_screen.dart';
+import 'package:dev_house/screens/share_post_screen.dart';
+import 'package:dev_house/widgets/feeds/views.dart';
 import 'package:flutter/material.dart';
-import '../../pages/GroupDetail.dart';
-import '../../pages/OthersProfile.dart';
-import '../../pages/SharePost.dart';
 import 'menu.dart';
-import 'views.dart';
 
-class feeds_t extends StatefulWidget {
-  const feeds_t({super.key});
+class feeds_l extends StatefulWidget {
+  const feeds_l({super.key});
 
   @override
-  _feeds_tState createState() => _feeds_tState();
+  _feeds_lState createState() => _feeds_lState();
 }
 
-class _feeds_tState extends State<feeds_t> {
+class _feeds_lState extends State<feeds_l> {
   bool likeb = false;
   bool dislikeb = false;
   bool saveb = false;
@@ -27,16 +27,15 @@ class _feeds_tState extends State<feeds_t> {
   Widget build(BuildContext context) {
     return Expanded(
       child: ListView.builder(
-        itemCount: 3,
+        itemCount: 11,
         itemBuilder: (BuildContext context, int index) {
           return Column(
             children: [
               BuildPost(
-                context: context, // Pass context here
-                type: 'textAndPhoto',
+                context: context,
+                type: 'text',
                 text:
                     'Wrapping up an unforgettable chapter at VIT Chennai with the grand finale of Vibrance\'24! 🎭 It\'s bittersweet bidding adieu to this cultural extravaganza, especially as it marks my final Vibrance as an organizer. The journey has been nothing short of incredible, filled with emotions as we wrapped up on a high note.',
-                imageUrl: 'assets/images/link.jpeg',
                 index: index,
                 likeb: likeb,
                 dislikeb: dislikeb,
@@ -59,12 +58,11 @@ class _feeds_tState extends State<feeds_t> {
   }
 }
 
-// ignore: must_be_immutable
 class BuildPost extends StatefulWidget {
   final BuildContext context;
   final String? type;
   final String? text;
-  final String? imageUrl;
+
   final int index;
   bool likeb; // Change here
   bool dislikeb;
@@ -80,7 +78,6 @@ class BuildPost extends StatefulWidget {
     required this.context,
     required this.type,
     this.text,
-    required this.imageUrl,
     required this.index,
     required this.like,
     required this.dislike,
@@ -256,41 +253,33 @@ class _BuildPostState extends State<BuildPost> {
               ),
             ),
           ),
-          if (widget.type == 'textAndPhoto')
-            GestureDetector(
-              onDoubleTap: () {
-                doubleTap();
-              },
+          if (widget.type == 'text')
+            Container(
+              color: Colors.grey[100],
+              padding: const EdgeInsets.only(
+                top: 14.0,
+                // bottom: 0, //change
+                left: 13.5,
+                right: 13.5,
+              ),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
-                    color: Colors.grey[100],
-                    padding: const EdgeInsets.only(
-                      top: 14.0,
-                      // bottom: 0, //change
-                      left: 13.5,
-                      right: 13.5,
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              showFullPost = !showFullPost;
-                            });
-                          },
-                          child: Text(
-                            showFullPost ? widget.text! : _getDisplayFullPost(),
-                            style: const TextStyle(fontSize: 14.5),
-                          ),
-                        ),
-                        const SizedBox(height: 14),
-                      ],
+                  GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        showFullPost = !showFullPost;
+                      });
+                    },
+                    onDoubleTap: () {
+                      doubleTap();
+                    },
+                    child: Text(
+                      showFullPost ? widget.text! : _getDisplayFullPost(),
+                      style: const TextStyle(fontSize: 14.5),
                     ),
                   ),
-                  Image.asset(widget.imageUrl!),
+                  const SizedBox(height: 12),
                 ],
               ),
             ),
@@ -350,7 +339,7 @@ class _BuildPostState extends State<BuildPost> {
                           children: [
                             _showAnimatedIconl && widget.likeb == true
                                 ? Image.asset(
-                                    "assets/icons/like_o.gif",
+                                    "assets/icons/feeds/like_o.gif",
                                     height: 20,
                                     width: 20,
                                     color:
@@ -358,12 +347,12 @@ class _BuildPostState extends State<BuildPost> {
                                   )
                                 : widget.likeb == false
                                     ? Image.asset(
-                                        "assets/icons/like_b.png",
+                                        "assets/icons/feeds/like_b.png",
                                         height: 20,
                                         width: 20,
                                       )
                                     : Image.asset(
-                                        "assets/icons/like_a.png",
+                                        "assets/icons/feeds/like_a.png",
                                         height: 20,
                                         width: 20,
                                         color: const Color.fromARGB(
@@ -392,7 +381,7 @@ class _BuildPostState extends State<BuildPost> {
                         print("comment");
                       },
                       child: Image.asset(
-                        "assets/icons/comment.png",
+                        "assets/icons/feeds/comment.png",
                         height: 21.5,
                         width: 21.5,
                       ),
@@ -416,7 +405,7 @@ class _BuildPostState extends State<BuildPost> {
                         });
                       },
                       child: Image.asset(
-                        "assets/icons/share.png",
+                        "assets/icons/feeds/share.png",
                         height: 24,
                         width: 24,
                       ),
@@ -432,7 +421,7 @@ class _BuildPostState extends State<BuildPost> {
                           child: Row(
                             children: [
                               Image.asset(
-                                "assets/icons/views.png",
+                                "assets/icons/feeds/views.png",
                                 height: 20,
                                 width: 20,
                               ),
@@ -464,18 +453,18 @@ class _BuildPostState extends State<BuildPost> {
                           },
                           child: _showAnimatedIcons && widget.saveb == true
                               ? Image.asset(
-                                  "assets/icons/save_o.gif",
+                                  "assets/icons/feeds/save_o.gif",
                                   height: 20,
                                   width: 20,
                                 )
                               : widget.saveb == false
                                   ? Image.asset(
-                                      "assets/icons/save_b.png",
+                                      "assets/icons/feeds/save_b.png",
                                       height: 20,
                                       width: 20,
                                     )
                                   : Image.asset(
-                                      "assets/icons/save_a.png",
+                                      "assets/icons/feeds/save_a.png",
                                       height: 20,
                                       width: 20,
                                     ),

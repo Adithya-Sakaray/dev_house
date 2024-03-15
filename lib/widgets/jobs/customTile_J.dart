@@ -1,4 +1,4 @@
-import 'package:dev_house/pages/JobDetail.dart';
+import 'package:dev_house/screens/job_details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -170,7 +170,7 @@ class _CustomTileState extends State<CustomTile_J> {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Image.asset(
-                            "assets/icons/wal.png",
+                            "assets/icons/job_tile/wal.png",
                             height: 16.5,
                             width: 16.5,
                           ),

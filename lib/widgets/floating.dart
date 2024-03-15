@@ -1,6 +1,6 @@
 import "package:dev_house/widgets/groups/newGroup.dart";
 import "package:dev_house/widgets/jobs/newJob.dart";
-import "package:dev_house/widgets/feeds/newPost.dart";
+import "package:dev_house/widgets/feeds/new_post.dart";
 import "package:flutter/material.dart";
 
 Container float(
@@ -48,7 +48,7 @@ Container float(
               width: 28,
               child: selectedNavIndex == 0 && selectedTabIndex == 0
                   ? Image.asset(
-                      "assets/icons/floating.png",
+                      "assets/icons/feed/floating.png",
                       color: const Color.fromARGB(255, 248, 245, 245),
                     )
                   : const Icon(

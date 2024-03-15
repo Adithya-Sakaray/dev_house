@@ -2,11 +2,11 @@ import 'package:dev_house/widgets/NavigationBar.dart';
 import 'package:dev_house/widgets/drawer.dart';
 import 'package:dev_house/widgets/floating.dart';
 import 'package:flutter/material.dart';
-import 'EventsPage.dart';
-import '../widgets/feeds/FeedPage.dart';
-import 'JobsPage.dart';
-import 'ProfilePage.dart';
-import 'ProjectsPage.dart';
+import 'event_screen.dart';
+import '../widgets/feeds/home_tabs.dart';
+import 'job_screen.dart';
+import 'profile_screen.dart';
+import 'projects_screen.dart';
 import '../widgets/appBar.dart';
 
 class HomePage extends StatefulWidget {

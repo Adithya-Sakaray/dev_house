@@ -1,8 +1,8 @@
 import "package:flutter/material.dart";
 
-import "../pages/MessagesPage.dart";
-import "../pages/NotificationsPage.dart";
-import "../pages/SearchPage.dart";
+import "../screens/message_screen.dart";
+import "../screens/notification_screen.dart";
+import "../screens/search_screen.dart";
 
 AppBar app(BuildContext context, int selectedIndex) {
   return AppBar(
@@ -36,7 +36,7 @@ AppBar app(BuildContext context, int selectedIndex) {
               icon: SizedBox(
                 height: 24,
                 width: 24,
-                child: Image.asset("assets/icons/appbar/s.png"),
+                child: Image.asset("assets/icons/app_bar/search.png"),
               ),
               onPressed: () {
                 Navigator.push(
@@ -51,7 +51,7 @@ AppBar app(BuildContext context, int selectedIndex) {
               icon: SizedBox(
                 height: 24,
                 width: 24,
-                child: Image.asset("assets/icons/appbar/s.png"),
+                child: Image.asset("assets/icons/app_bar/search.png"),
               ),
               onPressed: () {},
             )
@@ -59,7 +59,7 @@ AppBar app(BuildContext context, int selectedIndex) {
               icon: SizedBox(
                 height: 24,
                 width: 24,
-                child: Image.asset("assets/icons/appbar/n.png"),
+                child: Image.asset("assets/icons/app_bar/notification.png"),
               ),
               onPressed: () {
                 Navigator.push(
@@ -74,7 +74,7 @@ AppBar app(BuildContext context, int selectedIndex) {
               icon: SizedBox(
                 height: 25,
                 width: 24,
-                child: Image.asset("assets/icons/appbar/s.png"),
+                child: Image.asset("assets/icons/app_bar/search.png"),
               ),
               onPressed: () {},
             )
@@ -82,7 +82,7 @@ AppBar app(BuildContext context, int selectedIndex) {
               icon: SizedBox(
                 height: 25,
                 width: 24,
-                child: Image.asset("assets/icons/appbar/c.png"),
+                child: Image.asset("assets/icons/app_bar/message.png"),
               ),
               onPressed: () {
                 Navigator.push(
