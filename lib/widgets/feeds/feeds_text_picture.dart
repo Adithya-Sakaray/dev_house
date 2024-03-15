@@ -392,7 +392,7 @@ class _BuildPostState extends State<BuildPost> {
                         print("comment");
                       },
                       child: Image.asset(
-                        "assets/icons/comment.png",
+                        "assets/icons/feed/comment.png",
                         height: 21.5,
                         width: 21.5,
                       ),
@@ -416,7 +416,7 @@ class _BuildPostState extends State<BuildPost> {
                         });
                       },
                       child: Image.asset(
-                        "assets/icons/feeds/share.png",
+                        "assets/icons/feed/share.png",
                         height: 24,
                         width: 24,
                       ),
@@ -432,7 +432,7 @@ class _BuildPostState extends State<BuildPost> {
                           child: Row(
                             children: [
                               Image.asset(
-                                "assets/icons/feeds/views.png",
+                                "assets/icons/feed/views.png",
                                 height: 20,
                                 width: 20,
                               ),
@@ -464,18 +464,18 @@ class _BuildPostState extends State<BuildPost> {
                           },
                           child: _showAnimatedIcons && widget.saveb == true
                               ? Image.asset(
-                                  "assets/icons/feeds/save_o.gif",
+                                  "assets/icons/feed/save_o.gif",
                                   height: 20,
                                   width: 20,
                                 )
                               : widget.saveb == false
                                   ? Image.asset(
-                                      "assets/icons/feeds/save_b.png",
+                                      "assets/icons/feed/save_b.png",
                                       height: 20,
                                       width: 20,
                                     )
                                   : Image.asset(
-                                      "assets/icons/feeds/save_a.png",
+                                      "assets/icons/feed/save_a.png",
                                       height: 20,
                                       width: 20,
                                     ),
