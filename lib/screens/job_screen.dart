@@ -4,15 +4,15 @@ import 'package:dev_house/widgets/relevance.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
-class JobsPage extends StatefulWidget {
+class JobScreen extends StatefulWidget {
   final void Function(int) onTabIndexChange;
 
-  const JobsPage({Key? key, required this.onTabIndexChange}) : super(key: key);
+  const JobScreen({Key? key, required this.onTabIndexChange}) : super(key: key);
   @override
-  State<JobsPage> createState() => _JobsPageState();
+  State<JobScreen> createState() => _JobsPageState();
 }
 
-class _JobsPageState extends State<JobsPage>
+class _JobsPageState extends State<JobScreen>
     with SingleTickerProviderStateMixin {
   int selectedButtonIndex = 0;
   int selectedTabIndex = 0;

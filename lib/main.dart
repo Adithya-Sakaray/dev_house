@@ -1,6 +1,5 @@
+import 'package:dev_house/screens/home_screen.dart';
 import 'package:flutter/material.dart';
-
-import 'screens/home_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,7 +20,7 @@ class MyApp extends StatelessWidget {
         ),
       ),
       title: 'Job Portal',
-      home: const HomePage(),
+      home: const HomeScreen(),
     );
   }
 }

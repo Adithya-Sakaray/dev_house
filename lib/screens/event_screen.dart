@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class EventsPage extends StatelessWidget {
-  const EventsPage({super.key});
+class EventScreen extends StatelessWidget {
+  const EventScreen({super.key});
   @override
   Widget build(BuildContext context) {
     return const Scaffold(

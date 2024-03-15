@@ -150,7 +150,7 @@ class _BuildPostState extends State<BuildPost> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const OthersProfile(),
+                  builder: (context) => const OthersProfileScreen(),
                 ),
               );
             },
@@ -208,7 +208,7 @@ class _BuildPostState extends State<BuildPost> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const GroupDetail(),
+                              builder: (context) => const GroupDetailScreen(),
                             ),
                           );
                         });
@@ -410,7 +410,7 @@ class _BuildPostState extends State<BuildPost> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const SharePost(),
+                              builder: (context) => const SharePostScreen(),
                             ),
                           );
                         });

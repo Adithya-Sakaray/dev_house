@@ -1,4 +1,4 @@
-import 'package:dev_house/screens/job_details_screen.dart';
+import 'package:dev_house/screens/job_detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -29,7 +29,7 @@ class _CustomTileState extends State<CustomTile_J> {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => const JobDetail(),
+              builder: (context) => const JobDetailScreen(),
             ),
           );
         });

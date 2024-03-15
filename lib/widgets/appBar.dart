@@ -41,7 +41,7 @@ AppBar app(BuildContext context, int selectedIndex) {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const SearchPage()),
+                  MaterialPageRoute(builder: (context) => const SearchScreen()),
                 );
               },
             )
@@ -65,7 +65,7 @@ AppBar app(BuildContext context, int selectedIndex) {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => const NotificationsPage()),
+                      builder: (context) => const NotificationScreen()),
                 );
               },
             ),
@@ -87,7 +87,8 @@ AppBar app(BuildContext context, int selectedIndex) {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const MessagesPage()),
+                  MaterialPageRoute(
+                      builder: (context) => const MessageScreen()),
                 );
               },
             ),

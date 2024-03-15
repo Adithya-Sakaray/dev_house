@@ -1,9 +1,9 @@
 import 'dart:async';
 
+import 'package:dev_house/screens/group_detail_screen.dart';
+import 'package:dev_house/screens/others_profile_screen.dart';
+import 'package:dev_house/screens/share_post_screen.dart';
 import 'package:flutter/material.dart';
-import '../../screens/group_detail_screen.dart';
-import '../../screens/others_profile_screen.dart';
-import '../../screens/share_post_screen.dart';
 import 'menu.dart';
 import 'video.dart';
 import 'views.dart';
@@ -177,7 +177,7 @@ class _BuildPostState extends State<BuildPost> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const OthersProfile(),
+                  builder: (context) => const OthersProfileScreen(),
                 ),
               );
             },
@@ -235,7 +235,7 @@ class _BuildPostState extends State<BuildPost> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const GroupDetail(),
+                              builder: (context) => const GroupDetailScreen(),
                             ),
                           );
                         });
@@ -435,7 +435,7 @@ class _BuildPostState extends State<BuildPost> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const SharePost(),
+                              builder: (context) => const SharePostScreen(),
                             ),
                           );
                         });

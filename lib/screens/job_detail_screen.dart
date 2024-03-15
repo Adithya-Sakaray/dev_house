@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:share/share.dart';
 
-class JobDetail extends StatefulWidget {
-  const JobDetail({super.key});
+class JobDetailScreen extends StatefulWidget {
+  const JobDetailScreen({super.key});
 
   @override
-  State<JobDetail> createState() => _JobDetailState();
+  State<JobDetailScreen> createState() => _JobDetailState();
 }
 
-class _JobDetailState extends State<JobDetail> {
+class _JobDetailState extends State<JobDetailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

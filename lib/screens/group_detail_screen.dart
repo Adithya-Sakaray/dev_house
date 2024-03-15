@@ -1,13 +1,13 @@
 import "package:flutter/material.dart";
 
-class GroupDetail extends StatefulWidget {
-  const GroupDetail({super.key});
+class GroupDetailScreen extends StatefulWidget {
+  const GroupDetailScreen({super.key});
 
   @override
-  State<GroupDetail> createState() => _GroupDetailState();
+  State<GroupDetailScreen> createState() => _GroupDetailState();
 }
 
-class _GroupDetailState extends State<GroupDetail> {
+class _GroupDetailState extends State<GroupDetailScreen> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class FeedDetail extends StatefulWidget {
-  const FeedDetail({super.key});
+class FeedDetailScreen extends StatefulWidget {
+  const FeedDetailScreen({super.key});
 
   @override
-  State<FeedDetail> createState() => _FeedDetailState();
+  State<FeedDetailScreen> createState() => _FeedDetailState();
 }
 
-class _FeedDetailState extends State<FeedDetail> {
+class _FeedDetailState extends State<FeedDetailScreen> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(

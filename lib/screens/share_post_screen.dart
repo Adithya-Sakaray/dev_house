@@ -1,13 +1,13 @@
 import "package:flutter/material.dart";
 
-class SharePost extends StatefulWidget {
-  const SharePost({super.key});
+class SharePostScreen extends StatefulWidget {
+  const SharePostScreen({super.key});
 
   @override
-  State<SharePost> createState() => _SharePostState();
+  State<SharePostScreen> createState() => _SharePostState();
 }
 
-class _SharePostState extends State<SharePost> {
+class _SharePostState extends State<SharePostScreen> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(

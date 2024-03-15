@@ -1,22 +1,22 @@
+import 'package:dev_house/screens/event_screen.dart';
 import 'package:dev_house/widgets/NavigationBar.dart';
 import 'package:dev_house/widgets/drawer.dart';
 import 'package:dev_house/widgets/floating.dart';
 import 'package:flutter/material.dart';
-import 'event_screen.dart';
 import '../widgets/feeds/home_tabs.dart';
 import 'job_screen.dart';
 import 'profile_screen.dart';
-import 'projects_screen.dart';
+import 'project_screen.dart';
 import '../widgets/appBar.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomeScreen> {
   int _selectedNavIndex = 0;
   int _selectedTabIndex = 0;
   final Color _selectedColor = const Color.fromARGB(255, 7, 42, 240);
@@ -48,9 +48,9 @@ class _HomePageState extends State<HomePage> {
               },
             )
           : _selectedNavIndex == 1
-              ? const ProjectsPage()
+              ? const ProjectScreen()
               : _selectedNavIndex == 2
-                  ? JobsPage(
+                  ? JobScreen(
                       onTabIndexChange: (index) {
                         setState(() {
                           _selectedTabIndex = index;
@@ -58,9 +58,9 @@ class _HomePageState extends State<HomePage> {
                       },
                     )
                   : _selectedNavIndex == 3
-                      ? const EventsPage()
+                      ? const EventScreen()
                       : _selectedNavIndex == 4
-                          ? const ProfilePage()
+                          ? const ProfileScreen()
                           : Container(),
       bottomNavigationBar: BottomNavBar(
         selectedIndex: _selectedNavIndex,
