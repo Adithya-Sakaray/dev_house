@@ -1,7 +1,6 @@
 import "package:flutter/material.dart";
 
 import "../screens/message_screen.dart";
-import "../screens/notification_screen.dart";
 import "../screens/search_screen.dart";
 
 AppBar app(BuildContext context, int selectedIndex) {
@@ -46,12 +45,15 @@ AppBar app(BuildContext context, int selectedIndex) {
               },
             )
           : const SizedBox.shrink(),
-
       selectedIndex == 4
           ? IconButton(
               icon: const Padding(
                 padding: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
-                child: Icon(Icons.logout, size: 25, color: Colors.black,),
+                child: Icon(
+                  Icons.logout,
+                  size: 25,
+                  color: Colors.black,
+                ),
               ),
               onPressed: () {},
             )

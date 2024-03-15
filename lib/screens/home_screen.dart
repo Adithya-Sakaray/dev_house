@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'feed_page.dart';
 import 'job_screen.dart';
 import 'profile_screen.dart';
-import 'project_screen.dart';
+import 'group_screen.dart';
 import '../widgets/appBar.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -48,7 +48,7 @@ class _HomePageState extends State<HomeScreen> {
               },
             )
           : _selectedNavIndex == 1
-              ? const ProjectScreen()
+              ? const GroupScreen()
               : _selectedNavIndex == 2
                   ? JobScreen(
                       onTabIndexChange: (index) {

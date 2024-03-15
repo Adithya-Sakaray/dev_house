@@ -42,7 +42,7 @@ class BottomNavBar extends StatelessWidget {
                 : Image.asset("assets/icons/navigation/po.png",
                     color: Colors.grey.shade900),
           ),
-          label: 'Projects',
+          label: 'Groups',
         ),
         BottomNavigationBarItem(
           icon: SizedBox(
