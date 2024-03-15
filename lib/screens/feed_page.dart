@@ -4,9 +4,6 @@ import 'package:dev_house/widgets/groups/customTile_G.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
-import 'group_detail_screen.dart';
-import 'others_profile_screen.dart';
-
 class FeedPage extends StatefulWidget {
   final void Function(int) onTabIndexChange;
 
@@ -65,22 +62,6 @@ class _FeedPageState extends State<FeedPage>
   bool likeb = false; // Change here
   int like = 0;
   bool showFullPost = false;
-  bool _showAnimatedIconl = false;
-  void doubleTap() {
-    setState(() {
-      // Toggle the like button
-      likeb = !likeb;
-
-      // If the like button is now selected, ensure dislike button is deselected
-
-      _showAnimatedIconl = true;
-      Timer(const Duration(milliseconds: 500), () {
-        setState(() {
-          _showAnimatedIconl = false;
-        });
-      });
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -100,14 +81,7 @@ class _FeedPageState extends State<FeedPage>
                     unselectedLabelColor: Colors.grey.shade700,
                     labelColor: Colors.black,
                     indicatorColor: Colors.black,
-                    // onTap: (int ind) {
-                    //   setState(() {
-                    //     selectedTabIndex = ind;
-                    //   });
-                    //   widget.onTabIndexChange(selectedTabIndex);
-                    // },
                   ),
-                  // backgroundColor: Colors.white,
                 )
               ];
             },
@@ -140,164 +114,138 @@ class _FeedPageState extends State<FeedPage>
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
-                            GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                        const OthersProfileScreen(),
-                                  ),
-                                );
-                              },
-                              child: Container(
-                                //bar
-                                padding: const EdgeInsets.only(
-                                  top: 8,
-                                  left: 8,
-                                  right: 8,
-                                  bottom: 8,
-                                ), //bar size
-                                color: Colors.white,
+                            Container(
+                              //bar
+                              padding: const EdgeInsets.only(
+                                top: 10,
+                                left: 12,
+                                right: 8,
+                                bottom: 10,
+                              ), //bar size
+                              color: Colors.white,
 
-                                child: Row(
-                                  children: [
-                                    CircleAvatar(
-                                      radius: 20,
-                                      backgroundColor: Colors.grey[200],
+                              child: Row(
+                                children: [
+                                  CircleAvatar(
+                                    radius: 20,
+                                    backgroundColor: Colors.grey[200],
+                                  ),
+                                  const SizedBox(width: 12),
+                                  const Text(
+                                    'Username',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16,
                                     ),
-                                    const SizedBox(width: 12),
-                                    const Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          'Username',
+                                  ),
+                                  const Spacer(),
+                                  Transform.translate(
+                                    offset: const Offset(-10, 0),
+                                    child: Container(
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 12,
+                                      ),
+                                      decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius:
+                                              BorderRadius.circular(20.0),
+                                          border: Border.all(
+                                            color: Colors.grey.shade300,
+                                          )),
+                                      constraints: const BoxConstraints(
+                                        minWidth: 0,
+                                        minHeight: 32,
+                                      ),
+                                      child: const Center(
+                                        child: Text(
+                                          'Student',
                                           style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 16,
-                                          ),
-                                        ),
-                                        Row(
-                                          children: [
-                                            Icon(
-                                              Icons.verified,
-                                              color: Colors.blue,
-                                              size: 16,
-                                            ),
-                                            Text(
-                                              'Verified Professional',
-                                              style: TextStyle(
-                                                fontSize: 12,
-                                                color: Colors.blue,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                    const Spacer(),
-                                    Transform.translate(
-                                      offset: const Offset(9.5, 0),
-                                      child: GestureDetector(
-                                        onTap: () {
-                                          setState(() {
-                                            Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder: (context) =>
-                                                    const GroupDetailScreen(),
-                                              ),
-                                            );
-                                          });
-                                        },
-                                        child: Container(
-                                          padding: const EdgeInsets.symmetric(
-                                            horizontal: 12,
-                                          ),
-                                          decoration: BoxDecoration(
-                                            color: Colors.lightGreen[200],
-                                            borderRadius:
-                                                BorderRadius.circular(20.0),
-                                          ),
-                                          constraints: const BoxConstraints(
-                                            minWidth: 0,
-                                            minHeight: 32,
-                                          ),
-                                          child: const Center(
-                                            child: Text(
-                                              'Finance',
-                                              style: TextStyle(
-                                                fontSize: 11,
-                                                color: Colors.black,
-                                                // fontWeight: FontWeight.w400,
-                                              ),
-                                            ),
+                                            fontSize: 11,
+                                            color: Colors.black,
+                                            // fontWeight: FontWeight.w400,
                                           ),
                                         ),
                                       ),
                                     ),
-                                    Transform.translate(
-                                      offset: const Offset(8,
-                                          0), // Adjust the X and Y offset as needed
-                                      child: IconButton(
-                                        icon: const Icon(
-                                          Icons.more_vert,
-                                          size: 22,
-                                        ),
-                                        onPressed: () {
-                                          // Open bottom sheet menu
-                                        },
-                                      ),
-                                    ),
-                                  ],
-                                ),
+                                  ),
+                                ],
                               ),
                             ),
                           ],
                         ),
                       ),
                       if (ti == false)
-                        GestureDetector(
-                          onDoubleTap: () {
-                            doubleTap();
-                          },
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.stretch,
-                            children: [
-                              Container(
-                                color: Colors.grey[100],
-                                padding: const EdgeInsets.only(
-                                  top: 14.0,
-                                  // bottom: 0, //change
-                                  left: 13.5,
-                                  right: 13.5,
-                                ),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    GestureDetector(
-                                      onTap: () {
-                                        setState(() {
-                                          showFullPost = !showFullPost;
-                                        });
-                                      },
-                                      child: Text(
-                                        showFullPost
-                                            ? text
-                                            : _getDisplayFullPost(),
-                                        style: const TextStyle(fontSize: 14.5),
-                                      ),
-                                    ),
-                                    const SizedBox(height: 14),
-                                  ],
-                                ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            Container(
+                              color: Colors.grey[100],
+                              padding: const EdgeInsets.only(
+                                top: 14.0,
+                                // bottom: 0, //change
+                                left: 13.5,
+                                right: 13.5,
                               ),
-                              Image.asset(imageUrl),
-                            ],
-                          ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  GestureDetector(
+                                    onTap: () {
+                                      setState(() {
+                                        showFullPost = !showFullPost;
+                                      });
+                                    },
+                                    child: Text(
+                                      showFullPost
+                                          ? text
+                                          : _getDisplayFullPost(),
+                                      style: const TextStyle(fontSize: 14.5),
+                                    ),
+                                  ),
+                                  const SizedBox(height: 14),
+                                ],
+                              ),
+                            ),
+                            Image.asset(imageUrl),
+                          ],
                         ),
-
+                      Container(
+                        // color: Colors.white,
+                        padding: const EdgeInsets.only(
+                          top: 11,
+                          left: 12.0,
+                          right: 12.0,
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  likeb = !likeb;
+                                });
+                              },
+                              child: likeb
+                                  ? const Icon(
+                                      Icons.favorite,
+                                      color: Colors.red,
+                                      size: 22,
+                                    )
+                                  : const Icon(
+                                      Icons.favorite_outline,
+                                      color: Colors.black,
+                                      size: 22,
+                                    ),
+                            ),
+                            const SizedBox(width: 6),
+                            const Text("Like"),
+                          ],
+                        ),
+                      ),
+                      Divider(
+                        thickness: 2,
+                        color: Colors.grey.shade300,
+                      ),
                       // ListView for feed items
                     ],
                   ),
