@@ -84,7 +84,10 @@ class _RelevanceBottomSheetState extends State<RelevanceBottomSheet> {
                       style: TextStyle(fontSize: 16),
                     ),
                     trailing: selectedSortOption == SortOption.Relevance
-                        ? const Icon(Icons.check)
+                        ? const Icon(
+                            Icons.check,
+                            color: Color.fromARGB(255, 7, 42, 240),
+                          )
                         : null,
                     onTap: () {
                       setState(() {
@@ -113,7 +116,10 @@ class _RelevanceBottomSheetState extends State<RelevanceBottomSheet> {
                       style: TextStyle(fontSize: 16),
                     ),
                     trailing: selectedSortOption == SortOption.Latest
-                        ? const Icon(Icons.check)
+                        ? const Icon(
+                            Icons.check,
+                            color: Color.fromARGB(255, 7, 42, 240),
+                          )
                         : null,
                     onTap: () {
                       setState(() {

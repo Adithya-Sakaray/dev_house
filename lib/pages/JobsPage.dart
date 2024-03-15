@@ -1,4 +1,5 @@
 import 'package:dev_house/widgets/jobs/customTile_J.dart';
+import 'package:dev_house/widgets/jobs/filter.dart';
 import 'package:dev_house/widgets/relevance.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -11,13 +12,18 @@ class JobsPage extends StatefulWidget {
   State<JobsPage> createState() => _JobsPageState();
 }
 
-class _JobsPageState extends State<JobsPage> {
+class _JobsPageState extends State<JobsPage>
+    with SingleTickerProviderStateMixin {
   int selectedButtonIndex = 0;
   int selectedTabIndex = 0;
+  late TabController _tabController;
+
   final ScrollController _scrollController = ScrollController();
   @override
   void initState() {
     super.initState();
+    _tabController = TabController(length: 2, vsync: this);
+    _tabController.addListener(_handleTabChange);
 
     _scrollController.addListener(() {
       if (_scrollController.position.userScrollDirection ==
@@ -28,6 +34,13 @@ class _JobsPageState extends State<JobsPage> {
         setState(() {});
       }
     });
+  }
+
+  void _handleTabChange() {
+    setState(() {
+      selectedTabIndex = _tabController.index;
+    });
+    widget.onTabIndexChange(selectedTabIndex);
   }
 
   Future<void> _handleRefresh() async {
@@ -66,21 +79,17 @@ class _JobsPageState extends State<JobsPage> {
                   pinned: true,
                   title: TabBar(
                     tabs: _tabs,
+                    controller: _tabController,
                     unselectedLabelColor: Colors.grey.shade700,
                     labelColor: Colors.black,
                     indicatorColor: Colors.black,
-                    onTap: (int ind) {
-                      setState(() {
-                        selectedTabIndex = ind;
-                      });
-                      widget.onTabIndexChange(selectedTabIndex);
-                    },
                   ),
                   // backgroundColor: Colors.white,
                 ),
               ];
             },
             body: TabBarView(
+              controller: _tabController,
               children: [
                 SingleChildScrollView(
                   child: RefreshIndicator(
@@ -112,201 +121,217 @@ class _JobsPageState extends State<JobsPage> {
                             bottom: 4.70,
                           ),
                           margin: const EdgeInsets.only(top: 10.0),
-                          child: SingleChildScrollView(
-                            scrollDirection: Axis.horizontal,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                const SizedBox(
-                                  width: 13,
-                                  height: 35,
-                                ),
-                                ElevatedButton(
-                                  onPressed: () {
-                                    _relBottomSheet(
-                                        context, updateSelectedOption);
-                                    _handleRefresh();
-                                  },
-                                  style: ElevatedButton.styleFrom(
-                                    backgroundColor: const Color.fromARGB(
-                                        255, 211, 233, 251),
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(20.0),
+                          child: Stack(
+                            alignment: Alignment.centerRight,
+                            children: [
+                              SingleChildScrollView(
+                                scrollDirection: Axis.horizontal,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    const SizedBox(
+                                      width: 13,
+                                      height: 35,
                                     ),
-                                    minimumSize: const Size(0, 35),
-                                    elevation: 0, // Remove the elevation shadow
-                                  ),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      // Add your relevance icon here
-                                      Text(
-                                        selectedSortOptionText,
-                                        style: const TextStyle(
+                                    ElevatedButton(
+                                      onPressed: () {
+                                        _relBottomSheet(
+                                            context, updateSelectedOption);
+                                        _handleRefresh();
+                                      },
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: const Color.fromARGB(
+                                            255, 211, 233, 251),
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(20.0),
+                                        ),
+                                        minimumSize: const Size(0, 35),
+                                        elevation:
+                                            0, // Remove the elevation shadow
+                                      ),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          // Add your relevance icon here
+                                          Text(
+                                            selectedSortOptionText,
+                                            style: const TextStyle(
+                                              fontSize: 12,
+                                              color: Colors.black,
+                                            ),
+                                          ),
+                                          Transform.translate(
+                                            offset: const Offset(5,
+                                                -0.5), // Adjust the vertical offset as needed
+                                            child: const Icon(
+                                              Icons.keyboard_arrow_down_rounded,
+                                              color: Colors.black,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    const SizedBox(width: 10),
+                                    ElevatedButton(
+                                      onPressed: () {
+                                        setState(() {
+                                          chip[0] = !chip[0];
+                                        });
+                                        _handleRefresh();
+                                      },
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: chip[0]
+                                            ? const Color.fromARGB(
+                                                255, 211, 233, 251)
+                                            : Colors.grey.shade200,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(20.0),
+                                        ),
+                                        minimumSize: const Size(0, 35),
+                                        elevation:
+                                            0, // Remove the elevation shadow
+                                      ),
+                                      child: const Text(
+                                        'Full-time',
+                                        style: TextStyle(
                                           fontSize: 12,
                                           color: Colors.black,
                                         ),
                                       ),
-                                      Transform.translate(
-                                        offset: const Offset(5,
-                                            -0.5), // Adjust the vertical offset as needed
-                                        child: const Icon(
-                                          Icons.keyboard_arrow_down_rounded,
+                                    ),
+                                    const SizedBox(width: 10),
+                                    ElevatedButton(
+                                      onPressed: () {
+                                        setState(() {
+                                          chip[1] = !chip[1];
+                                        });
+                                        _handleRefresh();
+                                      },
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: chip[1]
+                                            ? const Color.fromARGB(
+                                                255, 211, 233, 251)
+                                            : Colors.grey.shade200,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(20.0),
+                                        ),
+                                        minimumSize: const Size(0, 35),
+                                        elevation:
+                                            0, // Remove the elevation shadow
+                                      ),
+                                      child: const Text(
+                                        'Paid',
+                                        style: TextStyle(
+                                          fontSize: 12,
                                           color: Colors.black,
                                         ),
                                       ),
-                                    ],
-                                  ),
-                                ),
-                                const SizedBox(width: 10),
-                                ElevatedButton(
-                                  onPressed: () {
-                                    setState(() {
-                                      chip[0] = !chip[0];
-                                    });
-                                    _handleRefresh();
-                                  },
-                                  style: ElevatedButton.styleFrom(
-                                    backgroundColor: chip[0]
-                                        ? const Color.fromARGB(
-                                            255, 211, 233, 251)
-                                        : Colors.grey.shade200,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(20.0),
                                     ),
-                                    minimumSize: const Size(0, 35),
-                                    elevation: 0, // Remove the elevation shadow
-                                  ),
-                                  child: const Text(
-                                    'Full-time',
-                                    style: TextStyle(
-                                      fontSize: 12,
-                                      color: Colors.black,
-                                    ),
-                                  ),
-                                ),
-                                const SizedBox(width: 10),
-                                ElevatedButton(
-                                  onPressed: () {
-                                    setState(() {
-                                      chip[1] = !chip[1];
-                                    });
-                                    _handleRefresh();
-                                  },
-                                  style: ElevatedButton.styleFrom(
-                                    backgroundColor: chip[1]
-                                        ? const Color.fromARGB(
-                                            255, 211, 233, 251)
-                                        : Colors.grey.shade200,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(20.0),
-                                    ),
-                                    minimumSize: const Size(0, 35),
-                                    elevation: 0, // Remove the elevation shadow
-                                  ),
-                                  child: const Text(
-                                    'Paid',
-                                    style: TextStyle(
-                                      fontSize: 12,
-                                      color: Colors.black,
-                                    ),
-                                  ),
-                                ),
-                                const SizedBox(width: 10),
-                                ElevatedButton(
-                                  onPressed: () {
-                                    setState(() {
-                                      chip[2] = !chip[2];
-                                    });
-                                    _handleRefresh();
-                                  },
-                                  style: ElevatedButton.styleFrom(
-                                    backgroundColor: chip[2]
-                                        ? const Color.fromARGB(
-                                            255, 211, 233, 251)
-                                        : Colors.grey.shade200,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(20.0),
-                                    ),
-                                    minimumSize: const Size(0, 35),
-                                    elevation: 0, // Remove the elevation shadow
-                                  ),
-                                  child: const Text(
-                                    'Internship',
-                                    style: TextStyle(
-                                      fontSize: 12,
-                                      color: Colors.black,
-                                    ),
-                                  ),
-                                ),
-                                const SizedBox(width: 10),
-                                ElevatedButton(
-                                  onPressed: () {
-                                    setState(() {
-                                      chip[3] = !chip[3];
-                                    });
-                                    _handleRefresh();
-                                  },
-                                  style: ElevatedButton.styleFrom(
-                                    backgroundColor: chip[3]
-                                        ? const Color.fromARGB(
-                                            255, 211, 233, 251)
-                                        : Colors.grey.shade200,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(20.0),
-                                    ),
-                                    minimumSize: const Size(0, 35),
-                                    elevation: 0, // Remove the elevation shadow
-                                  ),
-                                  child: const Text(
-                                    'Freelance',
-                                    style: TextStyle(
-                                      fontSize: 12,
-                                      color: Colors.black,
-                                    ),
-                                  ),
-                                ),
-                                const SizedBox(width: 6.75),
-                              ],
-                            ),
-                          ),
-                        ),
-                        selectedButtonIndex == 0
-                            ? SizedBox(
-                                height: MediaQuery.of(context).size.height,
-                                child: ListView.builder(
-                                  itemCount: 15,
-                                  itemBuilder: (context, index) {
-                                    return CustomTile_J(
-                                      title: 'Design',
-                                      subtitle: '34554' " members",
-                                      description:
-                                          'Talk, vibe, relax, repeat. Do whatever you',
+                                    const SizedBox(width: 10),
+                                    ElevatedButton(
                                       onPressed: () {
-                                        // Action to perform when button is pressed
+                                        setState(() {
+                                          chip[2] = !chip[2];
+                                        });
+                                        _handleRefresh();
                                       },
-                                    );
-                                  },
-                                ),
-                              )
-                            : SizedBox(
-                                height: MediaQuery.of(context).size.height,
-                                child: ListView.builder(
-                                  itemCount: 4,
-                                  itemBuilder: (context, index) {
-                                    return CustomTile_J(
-                                      title: 'Finance',
-                                      subtitle: '2354' " members",
-                                      description:
-                                          'Talk, vibe, relax, repeat. Do whatever you',
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: chip[2]
+                                            ? const Color.fromARGB(
+                                                255, 211, 233, 251)
+                                            : Colors.grey.shade200,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(20.0),
+                                        ),
+                                        minimumSize: const Size(0, 35),
+                                        elevation:
+                                            0, // Remove the elevation shadow
+                                      ),
+                                      child: const Text(
+                                        'Internship',
+                                        style: TextStyle(
+                                          fontSize: 12,
+                                          color: Colors.black,
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(width: 10),
+                                    ElevatedButton(
                                       onPressed: () {
-                                        // Action to perform when button is pressed
+                                        setState(() {
+                                          chip[3] = !chip[3];
+                                        });
+                                        _handleRefresh();
                                       },
-                                    );
-                                  },
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: chip[3]
+                                            ? const Color.fromARGB(
+                                                255, 211, 233, 251)
+                                            : Colors.grey.shade200,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(20.0),
+                                        ),
+                                        minimumSize: const Size(0, 35),
+                                        elevation:
+                                            0, // Remove the elevation shadow
+                                      ),
+                                      child: const Text(
+                                        'Freelance',
+                                        style: TextStyle(
+                                          fontSize: 12,
+                                          color: Colors.black,
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(width: 60),
+                                  ],
                                 ),
                               ),
+                              Positioned(
+                                right: 0,
+                                child: GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            const FilterPage(),
+                                      ),
+                                    );
+                                  },
+                                  child: Container(
+                                    padding: const EdgeInsets.all(13),
+                                    margin: const EdgeInsets.all(3),
+                                    color: Colors.grey.shade50,
+                                    child: const Center(
+                                      child: Icon(Icons.filter_list),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height,
+                          child: ListView.builder(
+                            itemCount: 3,
+                            itemBuilder: (context, index) {
+                              return const CustomTile_J(
+                                title: 'Design',
+                                subtitle: '34554' " members",
+                                description:
+                                    'Talk, vibe, relax, repeat. Do whatever you',
+                              );
+                            },
+                          ),
+                        )
                       ],
                     ),
                   ),
@@ -322,6 +347,7 @@ class _JobsPageState extends State<JobsPage> {
               ],
             ),
           ),
+          backgroundColor: Colors.grey.shade50,
         ),
       ),
     );

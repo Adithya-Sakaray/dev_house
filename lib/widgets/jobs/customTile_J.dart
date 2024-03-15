@@ -1,19 +1,17 @@
-import 'dart:math';
-
+import 'package:dev_house/pages/JobDetail.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class CustomTile_J extends StatefulWidget {
   final String title;
   final String subtitle;
   final String description;
-  final VoidCallback onPressed;
 
   const CustomTile_J({
     Key? key,
     required this.title,
     required this.subtitle,
     required this.description,
-    required this.onPressed,
   }) : super(key: key);
 
   @override
@@ -22,183 +20,211 @@ class CustomTile_J extends StatefulWidget {
 
 class _CustomTileState extends State<CustomTile_J> {
   bool showFullDescription = false;
-  late Color randomColor;
-
-  @override
-  void initState() {
-    super.initState();
-    randomColor = _getRandomColor();
-  }
-
-  Color _getRandomColor() {
-    final List<Color> lightColors = [
-      Colors.grey[300]!, // Light Grey
-      Colors.teal[100]!, // Teal
-      Colors.amber[100]!, // Amber
-      Colors.lightGreen[200]!, // Light Green
-      Colors.pink[100]!, // Pink
-      Colors.cyan[100]!, // Cyan
-      Colors.deepOrange[100]!, // Deep Orange
-      Colors.indigo[100]!, // Indigo
-      Colors.lime[300]!, // Lime
-      Colors.blue[100]!, // Blue
-      Colors.purple[100]!, // Purple
-    ];
-
-    List<Color> darkerColors = [
-      Colors.grey[400]!, // Light Grey
-      Colors.teal[200]!, // Teal
-      Colors.amber[200]!, // Amber
-      Colors.lightGreen[300]!, // Light Green
-      Colors.pink[200]!, // Pink
-      Colors.cyan[200]!, // Cyan
-      Colors.deepOrange[200]!, // Deep Orange
-      Colors.indigo[200]!, // Indigo
-      Colors.lime[400]!, // Lime
-      Colors.blue[200]!, // Blue
-      Colors.purple[200]!, // Purple
-    ];
-
-    // Randomly select a light color index
-    final int randomIndex = _getRandomIndex(lightColors.length);
-
-    // Get the corresponding light color
-    final Color lightColor = lightColors[randomIndex];
-
-    // Get the corresponding darker color
-    final Color darkerColor = darkerColors[randomIndex];
-
-    // Update the background color for the profile picture
-    setState(() {
-      profilePictureBackgroundColor = darkerColor;
-    });
-
-    return lightColor;
-  }
-
-  int _getRandomIndex(int max) {
-    return Random().nextInt(max);
-  }
-
-  late Color profilePictureBackgroundColor;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 18),
-      padding: const EdgeInsets.all(12),
-      decoration: BoxDecoration(
-        color: randomColor,
-        borderRadius: BorderRadius.circular(20.0),
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              // Profile Picture Container
-              Container(
-                margin: const EdgeInsets.only(
-                  left: 8,
-                  top: 8,
-                  bottom: 8,
-                ),
-                width: 42.5,
-                height: 42.5,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color:
-                      profilePictureBackgroundColor, // Change to your desired color or image
-                ),
-                // You can add profile picture here
-              ),
-              const SizedBox(
-                  // width: 40,
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const JobDetail(),
+            ),
+          );
+        });
+      },
+      child: Container(
+        margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 15.5),
+        padding: const EdgeInsets.all(12),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          // color: const Color.fromARGB(255, 167, 173, 205),
+          borderRadius: BorderRadius.circular(20.0),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                // Profile Picture Container
+                Container(
+                  margin: const EdgeInsets.only(
+                    left: 8,
+                    top: 4.2,
                   ),
-              // Text Content Container
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.only(
-                    left: 12,
-                    right: 12,
-                    top: 10,
-                    bottom: 5.4,
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        widget.title,
-                        style: const TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 15.3,
-                        ),
-                      ),
-                      Text(
-                        widget.subtitle,
-                        style: const TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.w200,
-                          fontSize: 13.3,
-                        ),
-                      ),
-                      const SizedBox(height: 8), // Adjust as needed
-                    ],
+                  width: 21.5,
+                  height: 27.5,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Colors
+                        .grey.shade200, // Change to your desired color or image
                   ),
                 ),
-              ),
+                const Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.only(
+                      top: 9.5,
+                      left: 8.0,
+                      right: 8.0,
+                    ),
+                    child: Text(
+                      "Hari Ram",
+                      style:
+                          TextStyle(fontSize: 11, fontWeight: FontWeight.w300),
+                    ),
+                  ),
+                ),
 
-              // Button Container
-              Container(
-                margin: const EdgeInsets.only(top: 4.0, right: 4),
-                child: ElevatedButton(
-                  onPressed: widget.onPressed,
-                  style: ElevatedButton.styleFrom(
-                    padding:
-                        const EdgeInsets.symmetric(vertical: 8, horizontal: 10),
-                    backgroundColor: Colors.black,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(25.0),
-                    ),
+                const Padding(
+                  padding: EdgeInsets.only(top: 11, right: 7.5),
+                  child: Text(
+                    "5d ago",
+                    style: TextStyle(fontSize: 11, fontWeight: FontWeight.w400),
                   ),
-                  child: const Text(
-                    "Join",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 12,
+                ),
+              ],
+            ),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.only(
+                      top: 9.5,
+                      left: 8.0,
+                      right: 8.0,
+                    ),
+                    child: Text(
+                      "Full-Stack Developer Intern for a Music-Tech AI Startup",
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
                     ),
                   ),
                 ),
-              ),
-            ],
-          ),
-          Padding(
-            padding: const EdgeInsets.only(
-              left: 8.0,
+                Container(
+                  margin: const EdgeInsets.only(
+                    left: 10,
+                    top: 11,
+                    right: 10,
+                  ),
+                  width: 40,
+                  height: 40,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    shape: BoxShape.rectangle,
+                    color: Colors
+                        .grey.shade200, // Change to your desired color or image
+                  ),
+                ),
+              ],
             ),
-            child: GestureDetector(
-              onTap: () {
-                setState(() {
-                  showFullDescription = !showFullDescription;
-                });
-              },
+            const Padding(
+              padding: EdgeInsets.only(
+                top: 5,
+                left: 8.0,
+                right: 8.0,
+              ),
               child: Text(
-                showFullDescription
-                    ? widget.description
-                    : _getDisplayDescription(), // Calling _getDisplayDescription here
-                style: const TextStyle(
-                  fontSize: 12.5,
-                  color: Colors.black,
-                  fontWeight: FontWeight.w200,
-                ),
+                "Soundverse AI",
+                style: TextStyle(
+                    fontSize: 13,
+                    fontWeight: FontWeight.w400,
+                    color: Colors.grey),
               ),
             ),
-          ),
-        ],
+            const SizedBox(
+              height: 20,
+            ),
+            Row(
+              children: [
+                Container(
+                  margin: const EdgeInsets.only(
+                    left: 8,
+                  ),
+                  // padding: const EdgeInsets.all(4),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    border: Border.all(
+                      // color: Colors.yellow.shade50,
+                      color: const Color.fromARGB(
+                          255, 170, 206, 172), // Border color
+                      width: 1, // Border width
+                    ),
+                  ),
+                  child: Material(
+                    color: Colors.transparent,
+                    borderRadius: BorderRadius.circular(15),
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 2.5, horizontal: 6.2),
+                      decoration: BoxDecoration(
+                        color: const Color.fromARGB(
+                            255, 238, 239, 226), // Button background color
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Image.asset(
+                            "assets/icons/wal.png",
+                            height: 16.5,
+                            width: 16.5,
+                          ),
+                          const SizedBox(width: 4),
+                          const Text(
+                            '₹10000 - ₹15000/Project',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 10,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    border: Border.all(
+                      color: Colors.grey, // Border color
+                      width: 1, // Border width
+                    ),
+                  ),
+                  child: Material(
+                    color: Colors.transparent,
+                    borderRadius: BorderRadius.circular(15),
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 4, horizontal: 7),
+                      decoration: BoxDecoration(
+                        color: Colors.white, // Button background color
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: const Text(
+                        'Monthly',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 10,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 12,
+            ),
+          ],
+        ),
       ),
     );
   }

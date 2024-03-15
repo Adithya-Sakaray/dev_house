@@ -257,40 +257,42 @@ class _BuildPostState extends State<BuildPost> {
             ),
           ),
           if (widget.type == 'textAndPhoto')
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Container(
-                  color: Colors.grey[100],
-                  padding: const EdgeInsets.only(
-                    top: 14.0,
-                    // bottom: 0, //change
-                    left: 13.5,
-                    right: 13.5,
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            showFullPost = !showFullPost;
-                          });
-                        },
-                        onDoubleTap: () {
-                          doubleTap();
-                        },
-                        child: Text(
-                          showFullPost ? widget.text! : _getDisplayFullPost(),
-                          style: const TextStyle(fontSize: 14.5),
+            GestureDetector(
+              onDoubleTap: () {
+                doubleTap();
+              },
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Container(
+                    color: Colors.grey[100],
+                    padding: const EdgeInsets.only(
+                      top: 14.0,
+                      // bottom: 0, //change
+                      left: 13.5,
+                      right: 13.5,
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              showFullPost = !showFullPost;
+                            });
+                          },
+                          child: Text(
+                            showFullPost ? widget.text! : _getDisplayFullPost(),
+                            style: const TextStyle(fontSize: 14.5),
+                          ),
                         ),
-                      ),
-                      const SizedBox(height: 14),
-                    ],
+                        const SizedBox(height: 14),
+                      ],
+                    ),
                   ),
-                ),
-                Image.asset(widget.imageUrl!),
-              ],
+                  Image.asset(widget.imageUrl!),
+                ],
+              ),
             ),
           Container(
             color: Colors.white,

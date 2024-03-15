@@ -13,15 +13,19 @@ class FeedPage extends StatefulWidget {
   State<FeedPage> createState() => _FeedPageState();
 }
 
-class _FeedPageState extends State<FeedPage> {
+class _FeedPageState extends State<FeedPage>
+    with SingleTickerProviderStateMixin {
   int selectedButtonIndex = 0;
   int selectedButtonIndexg = 0;
   int selectedTabIndex = 0;
+  late TabController _tabController;
+
   final ScrollController _scrollController = ScrollController();
   @override
   void initState() {
     super.initState();
-
+    _tabController = TabController(length: 2, vsync: this);
+    _tabController.addListener(_handleTabChange);
     _scrollController.addListener(() {
       if (_scrollController.position.userScrollDirection ==
           ScrollDirection.forward) {
@@ -31,6 +35,13 @@ class _FeedPageState extends State<FeedPage> {
         setState(() {});
       }
     });
+  }
+
+  void _handleTabChange() {
+    setState(() {
+      selectedTabIndex = _tabController.index;
+    });
+    widget.onTabIndexChange(selectedTabIndex);
   }
 
   Future<void> _handleRefresh() async {
@@ -60,22 +71,24 @@ class _FeedPageState extends State<FeedPage> {
                 SliverAppBar(
                   pinned: true,
                   title: TabBar(
+                    controller: _tabController,
                     tabs: _tabs,
                     unselectedLabelColor: Colors.grey.shade700,
                     labelColor: Colors.black,
                     indicatorColor: Colors.black,
-                    onTap: (int ind) {
-                      setState(() {
-                        selectedTabIndex = ind;
-                      });
-                      widget.onTabIndexChange(selectedTabIndex);
-                    },
+                    // onTap: (int ind) {
+                    //   setState(() {
+                    //     selectedTabIndex = ind;
+                    //   });
+                    //   widget.onTabIndexChange(selectedTabIndex);
+                    // },
                   ),
                   // backgroundColor: Colors.white,
-                ),
+                )
               ];
             },
             body: TabBarView(
+              controller: _tabController,
               children: [
                 RefreshIndicator(
                   onRefresh: _handleRefresh,
