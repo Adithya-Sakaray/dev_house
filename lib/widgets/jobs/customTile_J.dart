@@ -46,47 +46,19 @@ class _CustomTileState extends State<CustomTile_J> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                // Profile Picture Container
-                Container(
-                  margin: const EdgeInsets.only(
-                    left: 8,
-                    top: 4.2,
-                  ),
-                  width: 21.5,
-                  height: 27.5,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Colors
-                        .grey.shade200, // Change to your desired color or image
-                  ),
-                ),
-                const Expanded(
-                  child: Padding(
-                    padding: EdgeInsets.only(
-                      top: 9.5,
-                      left: 8.0,
-                      right: 8.0,
-                    ),
-                    child: Text(
-                      "Hari Ram",
-                      style:
-                          TextStyle(fontSize: 11, fontWeight: FontWeight.w300),
-                    ),
-                  ),
-                ),
-
-                const Padding(
-                  padding: EdgeInsets.only(top: 11, right: 7.5),
-                  child: Text(
-                    "5d ago",
-                    style: TextStyle(fontSize: 11, fontWeight: FontWeight.w400),
-                  ),
-                ),
-              ],
+            const Padding(
+              padding: EdgeInsets.only(
+                top: 5,
+                left: 8.0,
+                right: 8.0,
+              ),
+              child: Text(
+                "Soundverse AI",
+                style: TextStyle(
+                    fontSize: 13,
+                    fontWeight: FontWeight.w400,
+                    color: Colors.grey),
+              ),
             ),
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -122,36 +94,19 @@ class _CustomTileState extends State<CustomTile_J> {
                 ),
               ],
             ),
-            const Padding(
-              padding: EdgeInsets.only(
-                top: 5,
-                left: 8.0,
-                right: 8.0,
-              ),
-              child: Text(
-                "Soundverse AI",
-                style: TextStyle(
-                    fontSize: 13,
-                    fontWeight: FontWeight.w400,
-                    color: Colors.grey),
-              ),
-            ),
             const SizedBox(
               height: 20,
             ),
             Row(
               children: [
+                const SizedBox(
+                  width: 10,
+                ),
                 Container(
-                  margin: const EdgeInsets.only(
-                    left: 8,
-                  ),
-                  // padding: const EdgeInsets.all(4),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
                     border: Border.all(
-                      // color: Colors.yellow.shade50,
-                      color: const Color.fromARGB(
-                          255, 170, 206, 172), // Border color
+                      color: Colors.grey, // Border color
                       width: 1, // Border width
                     ),
                   ),
@@ -160,29 +115,17 @@ class _CustomTileState extends State<CustomTile_J> {
                     borderRadius: BorderRadius.circular(15),
                     child: Container(
                       padding: const EdgeInsets.symmetric(
-                          vertical: 2.5, horizontal: 6.2),
+                          vertical: 4, horizontal: 7),
                       decoration: BoxDecoration(
-                        color: const Color.fromARGB(
-                            255, 238, 239, 226), // Button background color
+                        color: Colors.white, // Button background color
                         borderRadius: BorderRadius.circular(15),
                       ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Image.asset(
-                            "assets/icons/job_tile/wal.png",
-                            height: 16.5,
-                            width: 16.5,
-                          ),
-                          const SizedBox(width: 4),
-                          const Text(
-                            '₹10000 - ₹15000/Project',
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 10,
-                            ),
-                          ),
-                        ],
+                      child: const Text(
+                        'Salary',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 10,
+                        ),
                       ),
                     ),
                   ),
@@ -209,7 +152,38 @@ class _CustomTileState extends State<CustomTile_J> {
                         borderRadius: BorderRadius.circular(15),
                       ),
                       child: const Text(
-                        'Monthly',
+                        'Internship',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 10,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    border: Border.all(
+                      color: Colors.grey, // Border color
+                      width: 1, // Border width
+                    ),
+                  ),
+                  child: Material(
+                    color: Colors.transparent,
+                    borderRadius: BorderRadius.circular(15),
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 4, horizontal: 7),
+                      decoration: BoxDecoration(
+                        color: Colors.white, // Button background color
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: const Text(
+                        'Chennai',
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: 10,

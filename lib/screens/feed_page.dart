@@ -1,9 +1,11 @@
-import 'package:dev_house/widgets/feeds/feeds_text_video.dart';
-import 'package:dev_house/widgets/feeds/feeds_text.dart';
-import 'package:dev_house/widgets/feeds/feeds_text_picture.dart';
+import 'dart:async';
+
 import 'package:dev_house/widgets/groups/customTile_G.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+
+import 'group_detail_screen.dart';
+import 'others_profile_screen.dart';
 
 class FeedPage extends StatefulWidget {
   final void Function(int) onTabIndexChange;
@@ -57,6 +59,28 @@ class _FeedPageState extends State<FeedPage>
     Tab(text: 'Discussions'),
     Tab(text: 'Groups'),
   ];
+  bool ti = false;
+  String text = "dfdsd";
+  String imageUrl = "assets/images/link.jpeg";
+  bool likeb = false; // Change here
+  int like = 0;
+  bool showFullPost = false;
+  bool _showAnimatedIconl = false;
+  void doubleTap() {
+    setState(() {
+      // Toggle the like button
+      likeb = !likeb;
+
+      // If the like button is now selected, ensure dislike button is deselected
+
+      _showAnimatedIconl = true;
+      Timer(const Duration(milliseconds: 500), () {
+        setState(() {
+          _showAnimatedIconl = false;
+        });
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -94,112 +118,187 @@ class _FeedPageState extends State<FeedPage>
                   onRefresh: _handleRefresh,
                   child: Column(
                     children: [
-                      Transform.translate(
-                        offset: const Offset(0, -2.75),
-                        child: Container(
-                          padding: const EdgeInsets.only(
-                            left: 4.0,
-                            right: 4.0,
-                            bottom: 6.0,
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              const SizedBox(width: 13),
-                              ElevatedButton(
-                                onPressed: () {
-                                  setState(() {
-                                    selectedButtonIndex = 0;
-                                  });
-                                  _handleRefresh();
-                                },
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: selectedButtonIndex == 0
-                                      ? const Color.fromARGB(255, 211, 233, 251)
-                                      : Colors.grey.shade200,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(20.0),
-                                  ),
-                                  minimumSize: const Size(0, 35),
-                                  elevation: 0, // Remove the elevation shadow
-                                ),
-                                child: const Text(
-                                  'For You',
-                                  style: TextStyle(
-                                    fontSize: 11.2,
-                                    color: Colors.black,
-                                  ),
-                                ),
-                              ),
-                              const SizedBox(width: 12.0),
-                              ElevatedButton(
-                                onPressed: () {
-                                  setState(() {
-                                    selectedButtonIndex = 1;
-                                  });
-                                  _handleRefresh();
-                                },
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: selectedButtonIndex == 1
-                                      ? const Color.fromARGB(255, 211, 233, 251)
-                                      : Colors.grey.shade200,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(20.0),
-                                  ),
-                                  minimumSize: const Size(0, 35),
-
-                                  elevation: 0, // Remove the elevation shadow
-                                ),
-                                child: const Text(
-                                  'Trending',
-                                  style: TextStyle(
-                                    fontSize: 11.2,
-                                    color: Colors.black,
-                                  ),
-                                ),
-                              ),
-                              const SizedBox(width: 12.0),
-                              ElevatedButton(
-                                onPressed: () {
-                                  setState(() {
-                                    selectedButtonIndex = 2;
-                                  });
-                                  _handleRefresh();
-                                },
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: selectedButtonIndex == 2
-                                      ? const Color.fromARGB(255, 211, 233, 251)
-                                      : Colors.grey.shade200,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(20.0),
-                                  ),
-                                  minimumSize: const Size(0, 35),
-
-                                  elevation: 0, // Remove the elevation shadow
-                                ),
-                                child: const Text(
-                                  'Latest',
-                                  style: TextStyle(
-                                    fontSize: 11.2,
-                                    color: Colors.black,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
                       Divider(
                         height: 1,
                         thickness: 8.5,
                         color: Colors.grey.shade200,
                       ),
+
+                      Container(
+                        width: MediaQuery.of(context).size.width,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12.0),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 2,
+                              blurRadius: 5,
+                              offset: const Offset(0, 3),
+                            ),
+                          ],
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        const OthersProfileScreen(),
+                                  ),
+                                );
+                              },
+                              child: Container(
+                                //bar
+                                padding: const EdgeInsets.only(
+                                  top: 8,
+                                  left: 8,
+                                  right: 8,
+                                  bottom: 8,
+                                ), //bar size
+                                color: Colors.white,
+
+                                child: Row(
+                                  children: [
+                                    CircleAvatar(
+                                      radius: 20,
+                                      backgroundColor: Colors.grey[200],
+                                    ),
+                                    const SizedBox(width: 12),
+                                    const Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'Username',
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 16,
+                                          ),
+                                        ),
+                                        Row(
+                                          children: [
+                                            Icon(
+                                              Icons.verified,
+                                              color: Colors.blue,
+                                              size: 16,
+                                            ),
+                                            Text(
+                                              'Verified Professional',
+                                              style: TextStyle(
+                                                fontSize: 12,
+                                                color: Colors.blue,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                    const Spacer(),
+                                    Transform.translate(
+                                      offset: const Offset(9.5, 0),
+                                      child: GestureDetector(
+                                        onTap: () {
+                                          setState(() {
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    const GroupDetailScreen(),
+                                              ),
+                                            );
+                                          });
+                                        },
+                                        child: Container(
+                                          padding: const EdgeInsets.symmetric(
+                                            horizontal: 12,
+                                          ),
+                                          decoration: BoxDecoration(
+                                            color: Colors.lightGreen[200],
+                                            borderRadius:
+                                                BorderRadius.circular(20.0),
+                                          ),
+                                          constraints: const BoxConstraints(
+                                            minWidth: 0,
+                                            minHeight: 32,
+                                          ),
+                                          child: const Center(
+                                            child: Text(
+                                              'Finance',
+                                              style: TextStyle(
+                                                fontSize: 11,
+                                                color: Colors.black,
+                                                // fontWeight: FontWeight.w400,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Transform.translate(
+                                      offset: const Offset(8,
+                                          0), // Adjust the X and Y offset as needed
+                                      child: IconButton(
+                                        icon: const Icon(
+                                          Icons.more_vert,
+                                          size: 22,
+                                        ),
+                                        onPressed: () {
+                                          // Open bottom sheet menu
+                                        },
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      if (ti == false)
+                        GestureDetector(
+                          onDoubleTap: () {
+                            doubleTap();
+                          },
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: [
+                              Container(
+                                color: Colors.grey[100],
+                                padding: const EdgeInsets.only(
+                                  top: 14.0,
+                                  // bottom: 0, //change
+                                  left: 13.5,
+                                  right: 13.5,
+                                ),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    GestureDetector(
+                                      onTap: () {
+                                        setState(() {
+                                          showFullPost = !showFullPost;
+                                        });
+                                      },
+                                      child: Text(
+                                        showFullPost
+                                            ? text
+                                            : _getDisplayFullPost(),
+                                        style: const TextStyle(fontSize: 14.5),
+                                      ),
+                                    ),
+                                    const SizedBox(height: 14),
+                                  ],
+                                ),
+                              ),
+                              Image.asset(imageUrl),
+                            ],
+                          ),
+                        ),
+
                       // ListView for feed items
-                      selectedButtonIndex == 0
-                          ? const feeds_f()
-                          : selectedButtonIndex == 1
-                              ? const feeds_t()
-                              : const feeds_l(),
                     ],
                   ),
                 ),
@@ -321,5 +420,14 @@ class _FeedPageState extends State<FeedPage>
         ),
       ),
     );
+  }
+
+  String _getDisplayFullPost() {
+    const maxCharactersToShow = 300;
+    if (text.length <= maxCharactersToShow) {
+      return text;
+    } else {
+      return '${text.substring(0, maxCharactersToShow)}... see more';
+    }
   }
 }

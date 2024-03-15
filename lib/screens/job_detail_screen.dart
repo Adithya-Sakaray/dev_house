@@ -3,6 +3,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:share/share.dart';
 
+import '../widgets/jobs/skills.dart';
+
+List<String> skillsList = [
+  "sdas",
+  "dfs",
+  "sdfd",
+  "sdfd",
+  "sdfd",
+  "sdfd",
+  "sdfd",
+  "sdfd",
+  "sdfd",
+];
+
 class JobDetailScreen extends StatefulWidget {
   const JobDetailScreen({super.key});
 
@@ -70,100 +84,7 @@ class _JobDetailState extends State<JobDetailScreen> {
             Center(
               child: Wrap(
                 spacing: 6.0,
-                children: [
-                  ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.grey.shade200,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                      ),
-                      minimumSize: const Size(0, 32.5),
-                      elevation: 0, // Remove the elevation shadow
-                    ),
-                    child: const Text(
-                      'Java',
-                      style: TextStyle(
-                        fontSize: 10,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.grey.shade200,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                      ),
-                      minimumSize: const Size(0, 32.5),
-
-                      elevation: 0, // Remove the elevation shadow
-                    ),
-                    child: const Text(
-                      'AWS',
-                      style: TextStyle(
-                        fontSize: 10,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.grey.shade200,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                      ),
-                      minimumSize: const Size(0, 32.5),
-
-                      elevation: 0, // Remove the elevation shadow
-                    ),
-                    child: const Text(
-                      'React',
-                      style: TextStyle(
-                        fontSize: 10,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.grey.shade200,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                      ),
-                      minimumSize: const Size(0, 32.5),
-                      elevation: 0, // Remove the elevation shadow
-                    ),
-                    child: const Text(
-                      'Flutter',
-                      style: TextStyle(
-                        fontSize: 10,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.grey.shade200,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                      ),
-                      minimumSize: const Size(0, 32.5),
-                      elevation: 0, // Remove the elevation shadow
-                    ),
-                    child: const Text(
-                      'Firebase',
-                      style: TextStyle(
-                        fontSize: 10,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ),
-                ],
+                children: jobSkills(skillsList),
               ),
             ),
             const SizedBox(height: 16),
@@ -197,7 +118,7 @@ class _JobDetailState extends State<JobDetailScreen> {
                           height: 4,
                         ),
                         const Text(
-                          'Monthly',
+                          'Salary',
                           style: TextStyle(
                             fontSize: 9,
                             color: Colors.black,
@@ -225,7 +146,7 @@ class _JobDetailState extends State<JobDetailScreen> {
                         height: 4,
                       ),
                       const Text(
-                        "Intern",
+                        "Internship",
                         style: TextStyle(
                           fontSize: 9,
                           color: Colors.black,
@@ -252,7 +173,7 @@ class _JobDetailState extends State<JobDetailScreen> {
                         height: 4,
                       ),
                       const Text(
-                        "Remote",
+                        "Chennai",
                         style: TextStyle(
                           fontSize: 9,
                           color: Colors.black,
@@ -268,42 +189,66 @@ class _JobDetailState extends State<JobDetailScreen> {
               padding: EdgeInsets.zero,
               child: Divider(
                 color: Colors.grey.shade200,
-                height: 20,
+                height: 30,
                 thickness: 7,
                 indent: 0,
                 endIndent: 0,
               ),
             ),
+            const SizedBox(height: 5),
+
             // Job description
             const Text(
-              'Job Description',
+              'ABOUT THE GIG',
               style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
+                fontSize: 14,
+                color: Colors.grey,
+                fontWeight: FontWeight.w500,
               ),
             ),
             const SizedBox(height: 10),
             const Text(
               'Lorem ipsum dolor sit amet, consectetur adipiscing elit. '
               'Ut eu lorem nec justo interdum sodales vel sit amet libero.',
-              style: TextStyle(fontSize: 16),
+              style: TextStyle(fontSize: 14),
             ),
-            const SizedBox(height: 20),
-            // Posted by
+            const SizedBox(height: 25),
+
             const Text(
-              'Posted by Company Name',
+              'Company Description',
               style: TextStyle(
-                fontStyle: FontStyle.italic,
+                fontSize: 14,
+                color: Colors.grey,
+                fontWeight: FontWeight.w500,
               ),
-              textAlign: TextAlign.center,
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 10),
+            const Text(
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. '
+              'Ut eu lorem nec justo interdum sodales vel sit amet libero.'
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. '
+              'Ut eu lorem nec justo interdum sodales vel sit amet libero.'
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. '
+              'Ut eu lorem nec justo interdum sodales vel sit amet libero.'
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. '
+              'Ut eu lorem nec justo interdum sodales vel sit amet libero.',
+              style: TextStyle(fontSize: 14),
+            ),
+            const SizedBox(height: 15),
             // Apply button
             ElevatedButton(
               onPressed: () {
                 // Add functionality to apply for the job
               },
-              child: const Text('Apply Now'),
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all<Color>(
+                  const Color.fromARGB(255, 7, 42, 240),
+                ),
+              ),
+              child: const Text(
+                'Apply Now',
+                style: TextStyle(color: Colors.white),
+              ),
             ),
           ],
         ),

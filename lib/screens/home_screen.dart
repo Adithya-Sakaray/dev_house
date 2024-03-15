@@ -1,9 +1,9 @@
 import 'package:dev_house/screens/event_screen.dart';
+import 'package:dev_house/screens/feed_page.dart';
 import 'package:dev_house/widgets/NavigationBar.dart';
 import 'package:dev_house/widgets/drawer.dart';
 import 'package:dev_house/widgets/floating.dart';
 import 'package:flutter/material.dart';
-import '../widgets/feeds/home_tabs.dart';
 import 'job_screen.dart';
 import 'profile_screen.dart';
 import 'project_screen.dart';
