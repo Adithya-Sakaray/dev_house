@@ -23,22 +23,13 @@ class _FeedPageState extends State<FeedPage>
   int selectedButtonIndexg = 0;
   int selectedTabIndex = 0;
 
-  Future<void> _handleRefresh() async {
-    // Implement your refresh logic here
-    // For example, you can fetch new data from a network or update existing data
-    await Future.delayed(const Duration(seconds: 2)); // Simulating a delay
-    setState(() {
-      // Update state after refresh
-    });
-  }
+
 
 
   @override
   Widget build(BuildContext context) {
     final FeedPageController feedPageController = Get.find<FeedPageController>();
-    return RefreshIndicator(
-      onRefresh: _handleRefresh,
-      child: SingleChildScrollView(
+    return SingleChildScrollView(
         child: Column(
           children: [
             Container(
@@ -60,7 +51,6 @@ class _FeedPageState extends State<FeedPage>
                       setState(() {
                         selectedButtonIndexg = 0;
                       });
-                      _handleRefresh();
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: selectedButtonIndexg == 0
@@ -86,7 +76,6 @@ class _FeedPageState extends State<FeedPage>
                       setState(() {
                         selectedButtonIndexg = 1;
                       });
-                      _handleRefresh();
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: selectedButtonIndexg == 1
@@ -112,7 +101,6 @@ class _FeedPageState extends State<FeedPage>
                       setState(() {
                         selectedButtonIndexg = 2;
                       });
-                      _handleRefresh();
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: selectedButtonIndexg == 2
@@ -141,8 +129,7 @@ class _FeedPageState extends State<FeedPage>
             displayFeeds(selectedButtonIndexg, feedPageController.studentPost, feedPageController.professionalPost, feedPageController.recruiterPost),
           ],
         ),
-      ),
-    );
+      );
   }
 
   Widget displayFeeds(int index,RxList studentPosts,RxList professionalPosts, RxList recruiterPosts) {

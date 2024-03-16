@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -5,26 +7,42 @@ import 'package:share/share.dart';
 
 import '../widgets/jobs/skills.dart';
 
-List<String> skillsList = [
-  "sdas",
-  "dfs",
-  "sdfd",
-  "sdfd",
-  "sdfd",
-  "sdfd",
-  "sdfd",
-  "sdfd",
-  "sdfd",
-];
-
 class JobDetailScreen extends StatefulWidget {
-  const JobDetailScreen({super.key});
+  final String companyName;
+  final String role;
+  final Int? salary;
+  final String type;
+  final String location;
+  final List<dynamic> skills;
+  final String jobDesc;
+  final String companyDesc;
+
+  const JobDetailScreen(
+      {Key? key,
+        required this.companyName,
+        required this.role,
+        this.salary,
+        required this.type,
+        required this.location,
+        required this.skills,
+        required this.jobDesc,
+        required this.companyDesc})
+      : super(key: key);
 
   @override
   State<JobDetailScreen> createState() => _JobDetailState();
 }
 
 class _JobDetailState extends State<JobDetailScreen> {
+  late List<String> skillList;
+
+  @override
+  void initState() {
+    super.initState();
+    // Convert widget.skills to list of strings
+    skillList = widget.skills.map((element) => element.toString()).toList();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,15 +71,15 @@ class _JobDetailState extends State<JobDetailScreen> {
             const SizedBox(height: 20),
 
             const CircleAvatar(
-              radius:
-                  52.5, // Adjust the radius to change the size of the profile picture
+              radius: 52.5,
+              // Adjust the radius to change the size of the profile picture
               backgroundColor: Colors.grey,
               // backgroundImage: AssetImage('assets/images/pp.jpg'),
             ),
             const SizedBox(height: 12),
             // Company name
-            const Text(
-              'Techvortexx',
+            Text(
+              widget.companyName,
               style: TextStyle(
                 fontSize: 15,
                 color: Colors.grey,
@@ -71,8 +89,8 @@ class _JobDetailState extends State<JobDetailScreen> {
             ),
             const SizedBox(height: 8),
             // Job role
-            const Text(
-              'Graphic Designer',
+            Text(
+              widget.role,
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.w600,
@@ -84,7 +102,7 @@ class _JobDetailState extends State<JobDetailScreen> {
             Center(
               child: Wrap(
                 spacing: 6.0,
-                children: jobSkills(skillsList),
+                children: skillList.map((skill) => Chip(label: Text(skill))).toList(),
               ),
             ),
             const SizedBox(height: 16),
@@ -117,9 +135,9 @@ class _JobDetailState extends State<JobDetailScreen> {
                         const SizedBox(
                           height: 4,
                         ),
-                        const Text(
-                          'Salary',
-                          style: TextStyle(
+                        Text(
+                          widget.salary == null ? "Salary" : "${widget.salary}",
+                          style: const TextStyle(
                             fontSize: 9,
                             color: Colors.black,
                           ),
@@ -145,9 +163,9 @@ class _JobDetailState extends State<JobDetailScreen> {
                       const SizedBox(
                         height: 4,
                       ),
-                      const Text(
-                        "Internship",
-                        style: TextStyle(
+                      Text(
+                        widget.type,
+                        style: const TextStyle(
                           fontSize: 9,
                           color: Colors.black,
                         ),
@@ -172,9 +190,9 @@ class _JobDetailState extends State<JobDetailScreen> {
                       const SizedBox(
                         height: 4,
                       ),
-                      const Text(
-                        "Chennai",
-                        style: TextStyle(
+                      Text(
+                        widget.location,
+                        style: const TextStyle(
                           fontSize: 9,
                           color: Colors.black,
                         ),
@@ -207,9 +225,8 @@ class _JobDetailState extends State<JobDetailScreen> {
               ),
             ),
             const SizedBox(height: 10),
-            const Text(
-              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. '
-              'Ut eu lorem nec justo interdum sodales vel sit amet libero.',
+            Text(
+              widget.jobDesc,
               style: TextStyle(fontSize: 14),
             ),
             const SizedBox(height: 25),
@@ -223,15 +240,8 @@ class _JobDetailState extends State<JobDetailScreen> {
               ),
             ),
             const SizedBox(height: 10),
-            const Text(
-              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. '
-              'Ut eu lorem nec justo interdum sodales vel sit amet libero.'
-              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. '
-              'Ut eu lorem nec justo interdum sodales vel sit amet libero.'
-              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. '
-              'Ut eu lorem nec justo interdum sodales vel sit amet libero.'
-              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. '
-              'Ut eu lorem nec justo interdum sodales vel sit amet libero.',
+            Text(
+              widget.companyDesc,
               style: TextStyle(fontSize: 14),
             ),
             const SizedBox(height: 15),

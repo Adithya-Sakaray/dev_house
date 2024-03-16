@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 
 class EventDetailScreen extends StatelessWidget {
-  const EventDetailScreen({super.key});
+
+  final String title;
+  final String startTime;
+  final String endTime;
+  final String type;
+  final String description;
+  const EventDetailScreen({super.key, required this.title, required this.startTime, required this.endTime, required this.type, required this.description});
 
   @override
   Widget build(BuildContext context) {
@@ -16,9 +22,9 @@ class EventDetailScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
 
-              const Text(
-                  "Title",
-                style: TextStyle(
+               Text(
+                  title,
+                style: const TextStyle(
                   fontSize: 27,
                   fontWeight: FontWeight.w700
                 ),
@@ -31,7 +37,7 @@ class EventDetailScreen extends StatelessWidget {
                   Padding(
                     padding:
                     const EdgeInsets.symmetric(vertical: 4, horizontal: 6),
-                    child: Text("10 March @ 17:00 - 10 March @ 21:00"),
+                    child: Text("${startTime.substring(0,10)} - ${endTime.substring(0,10)}"),
                   ),
                 ]
               ),

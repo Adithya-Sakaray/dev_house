@@ -28,4 +28,8 @@ class FeedPageController extends GetxController {
       print("Error occured in controller fetch student posts $e");
     }
   }
+
+  Future<void> uploadPost(String content) async {
+
+  }
 }
