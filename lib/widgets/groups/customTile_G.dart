@@ -6,14 +6,12 @@ class CustomTile_G extends StatefulWidget {
   final String title;
   final String subtitle;
   final String description;
-  final VoidCallback onPressed;
 
   const CustomTile_G({
     Key? key,
     required this.title,
     required this.subtitle,
     required this.description,
-    required this.onPressed,
   }) : super(key: key);
 
   @override
@@ -115,9 +113,7 @@ class _CustomTileState extends State<CustomTile_G> {
                 ),
                 // You can add profile picture here
               ),
-              const SizedBox(
-                  // width: 40,
-                  ),
+
               // Text Content Container
               Expanded(
                 child: Padding(
@@ -148,29 +144,6 @@ class _CustomTileState extends State<CustomTile_G> {
                       ),
                       const SizedBox(height: 8), // Adjust as needed
                     ],
-                  ),
-                ),
-              ),
-
-              // Button Container
-              Container(
-                margin: const EdgeInsets.only(top: 4.0, right: 4),
-                child: ElevatedButton(
-                  onPressed: widget.onPressed,
-                  style: ElevatedButton.styleFrom(
-                    padding:
-                        const EdgeInsets.symmetric(vertical: 8, horizontal: 10),
-                    backgroundColor: Colors.black,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(25.0),
-                    ),
-                  ),
-                  child: const Text(
-                    "Join",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 12,
-                    ),
                   ),
                 ),
               ),

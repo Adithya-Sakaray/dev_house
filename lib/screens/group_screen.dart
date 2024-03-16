@@ -1,3 +1,5 @@
+import 'package:dev_house/screens/feed_page.dart';
+import 'package:dev_house/screens/group_feed_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/groups/customTile_G.dart';
@@ -102,14 +104,20 @@ class _GroupScreenState extends State<GroupScreen> {
                       child: ListView.builder(
                         itemCount: 15,
                         itemBuilder: (context, index) {
-                          return CustomTile_G(
-                            title: 'Design',
-                            subtitle: '34554' " members",
-                            description:
-                                'Talk, vibe, relax, repeat. Do whatever you',
-                            onPressed: () {
-                              // Action to perform when button is pressed
+                          return GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const GroupFeedScreen()));
                             },
+                            child: const CustomTile_G(
+                              title: 'Design',
+                              subtitle: '34554' " members",
+                              description:
+                                  'Talk, vibe, relax, repeat. Do whatever you',
+                            ),
                           );
                         },
                       ),
@@ -119,14 +127,19 @@ class _GroupScreenState extends State<GroupScreen> {
                       child: ListView.builder(
                         itemCount: 4,
                         itemBuilder: (context, index) {
-                          return CustomTile_G(
-                            title: 'Finance',
-                            subtitle: '2354' " members",
-                            description:
-                                'Talk, vibe, relax, repeat. Do whatever you',
-                            onPressed: () {
-                              // Action to perform when button is pressed
+                          return GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const FeedPage()));
                             },
+                            child: const CustomTile_G(
+                              title: 'Finance',
+                              subtitle: '2354' " members",
+                              description:
+                                  'Talk, vibe, relax, repeat. Do whatever you',
+                            ),
                           );
                         },
                       ),

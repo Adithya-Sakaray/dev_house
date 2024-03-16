@@ -40,13 +40,7 @@ class _HomePageState extends State<HomeScreen> {
             )
           : null,
       body: _selectedNavIndex == 0
-          ? FeedPage(
-              onTabIndexChange: (index) {
-                setState(() {
-                  _selectedTabIndex = index;
-                });
-              },
-            )
+          ? const FeedPage()
           : _selectedNavIndex == 1
               ? const GroupScreen()
               : _selectedNavIndex == 2
