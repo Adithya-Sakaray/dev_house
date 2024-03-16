@@ -81,7 +81,7 @@ class LoginScreen extends StatelessWidget {
                       onTap: () {
                         //Handle auth
                         if(emailController.text != "" && passwordController.text != ""){
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeScreen()));
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeScreen())).then((value) => clearFields());
                         }
                       },
                       child: const ButtonComponent(
@@ -118,5 +118,10 @@ class LoginScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void clearFields() {
+    emailController.clear();
+    passwordController.clear();
   }
 }
