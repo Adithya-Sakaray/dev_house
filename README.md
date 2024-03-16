@@ -6,7 +6,7 @@ Welcome to our women-centric mobile application designed to empower and uplift w
 
 1. **Gender Disparities**: Women comprise only [26% of the computing workforce](https://builtin.com/women-tech/computer-science-statistics) in the United States, showcasing a significant gender gap in technology-related fields.
 
-2. **Tech Industry Representation**: Despite constituting half of the global population, women hold only [19% of tech-related jobs](https://www.weforum.org/agenda/2019/06/women-in-tech-stats-the-hard-truths-of-an-uphill-battle/), highlighting the need for initiatives that promote gender diversity and inclusion.
+2. **Professional Industry Representation**: Despite constituting half of the global population, women hold only [19% of Professional-related jobs](https://www.weforum.org/agenda/2019/06/women-in-tech-stats-the-hard-truths-of-an-uphill-battle/), highlighting the need for initiatives that promote gender diversity and inclusion.
 
 3. **Mentorship and Support**: According to a study, [83% of women](https://hbr.org/2019/11/research-women-score-higher-than-men-in-most-leadership-skills) scored higher than men in most leadership skills, emphasizing the importance of mentorship and support networks in nurturing women's leadership potential.
 
