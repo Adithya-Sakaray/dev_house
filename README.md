@@ -47,13 +47,21 @@ To begin using our application:
 5. **Feedback**: We value your input; share your thoughts and suggestions for improvement.
 
 ## Contributing
-
 We welcome contributions! Fork the repository, make your changes, and submit a pull request following our guidelines.
+# Running Flutter App Locally from GitHub
 
-## Support
+To run a Flutter app locally from GitHub:
 
-For assistance or inquiries, contact our support team at support@example.com.
+1. **Clone Repository**: Use `git clone <repository-url>` to clone the GitHub repository to your local machine.
 
-## License
+2. **Navigate to Project Directory**: Change directory to the cloned project using `cd <project-directory>`.
 
-This project is licensed under the MIT License.
+3. **Install Dependencies**: Run `flutter pub get` to install dependencies specified in `pubspec.yaml`.
+
+4. **Ensure Flutter SDK**: Make sure Flutter SDK is installed on your machine.
+
+5. **Connect Device**: Connect a physical device or set up an emulator/simulator.
+
+6. **Run the App**: Execute `flutter run` to run the app on the connected device/emulator.
+
+7. **Verify**: The app should launch on the device/emulator; interact with it to explore features.
