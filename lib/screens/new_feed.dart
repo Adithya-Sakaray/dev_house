@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class NewPost extends StatefulWidget {
-  const NewPost({super.key});
+class NewFeed extends StatefulWidget {
+  const NewFeed({super.key});
 
   @override
-  State<NewPost> createState() => _NewPostState();
+  State<NewFeed> createState() => _NewPostState();
 }
 
-class _NewPostState extends State<NewPost> {
+class _NewPostState extends State<NewFeed> {
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _descriptionController = TextEditingController();
   int _titleMaxLength = 50;

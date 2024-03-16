@@ -1,6 +1,5 @@
 import 'package:dev_house/screens/event_screen.dart';
 import 'package:dev_house/widgets/NavigationBar.dart';
-import 'package:dev_house/widgets/drawer.dart';
 import 'package:dev_house/widgets/floating.dart';
 import 'package:flutter/material.dart';
 import 'feed_page.dart';
@@ -18,7 +17,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomePageState extends State<HomeScreen> {
   int _selectedNavIndex = 0;
-  int _selectedTabIndex = 0;
+  final int _selectedTabIndex = 0;
   final Color _selectedColor = const Color.fromARGB(255, 7, 42, 240);
 
   void _onItemTapped(int index) {
@@ -34,23 +33,12 @@ class _HomePageState extends State<HomeScreen> {
         context,
         _selectedNavIndex,
       ),
-      drawer: _selectedNavIndex == 0
-          ? draw(
-              context,
-            )
-          : null,
       body: _selectedNavIndex == 0
           ? const FeedPage()
           : _selectedNavIndex == 1
               ? const GroupScreen()
               : _selectedNavIndex == 2
-                  ? JobScreen(
-                      onTabIndexChange: (index) {
-                        setState(() {
-                          _selectedTabIndex = index;
-                        });
-                      },
-                    )
+                  ? const JobScreen()
                   : _selectedNavIndex == 3
                       ? const EventScreen()
                       : _selectedNavIndex == 4

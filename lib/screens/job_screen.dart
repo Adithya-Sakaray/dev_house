@@ -4,9 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
 class JobScreen extends StatefulWidget {
-  final void Function(int) onTabIndexChange;
-
-  const JobScreen({Key? key, required this.onTabIndexChange}) : super(key: key);
+  const JobScreen({Key? key}) : super(key: key);
   @override
   State<JobScreen> createState() => _JobsPageState();
 }
@@ -15,14 +13,11 @@ class _JobsPageState extends State<JobScreen>
     with SingleTickerProviderStateMixin {
   int selectedButtonIndex = 0;
   int selectedTabIndex = 0;
-  late TabController _tabController;
 
   final ScrollController _scrollController = ScrollController();
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 2, vsync: this);
-    _tabController.addListener(_handleTabChange);
 
     _scrollController.addListener(() {
       if (_scrollController.position.userScrollDirection ==
@@ -33,13 +28,6 @@ class _JobsPageState extends State<JobScreen>
         setState(() {});
       }
     });
-  }
-
-  void _handleTabChange() {
-    setState(() {
-      selectedTabIndex = _tabController.index;
-    });
-    widget.onTabIndexChange(selectedTabIndex);
   }
 
   Future<void> _handleRefresh() async {

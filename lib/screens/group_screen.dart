@@ -1,8 +1,6 @@
-import 'package:dev_house/screens/feed_page.dart';
-import 'package:dev_house/screens/group_feed_screen.dart';
+import 'package:dev_house/widgets/groups/all_groups.dart';
+import 'package:dev_house/widgets/groups/my_groups.dart';
 import 'package:flutter/material.dart';
-
-import '../widgets/groups/customTile_G.dart';
 
 class GroupScreen extends StatefulWidget {
   const GroupScreen({super.key});
@@ -98,52 +96,7 @@ class _GroupScreenState extends State<GroupScreen> {
                   ],
                 ),
               ),
-              selectedButtonIndexg == 0
-                  ? SizedBox(
-                      height: MediaQuery.of(context).size.height,
-                      child: ListView.builder(
-                        itemCount: 15,
-                        itemBuilder: (context, index) {
-                          return GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const GroupFeedScreen()));
-                            },
-                            child: const CustomTile_G(
-                              title: 'Design',
-                              subtitle: '34554' " members",
-                              description:
-                                  'Talk, vibe, relax, repeat. Do whatever you',
-                            ),
-                          );
-                        },
-                      ),
-                    )
-                  : SizedBox(
-                      height: MediaQuery.of(context).size.height,
-                      child: ListView.builder(
-                        itemCount: 4,
-                        itemBuilder: (context, index) {
-                          return GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => const FeedPage()));
-                            },
-                            child: const CustomTile_G(
-                              title: 'Finance',
-                              subtitle: '2354' " members",
-                              description:
-                                  'Talk, vibe, relax, repeat. Do whatever you',
-                            ),
-                          );
-                        },
-                      ),
-                    ),
+              selectedButtonIndexg == 0 ? const AllGroups() : const MyGroups(),
             ],
           ),
         ),

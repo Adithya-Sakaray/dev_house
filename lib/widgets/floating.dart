@@ -1,6 +1,6 @@
 import "package:dev_house/widgets/groups/newGroup.dart";
 import "package:dev_house/widgets/jobs/newJob.dart";
-import "package:dev_house/widgets/feeds/new_post.dart";
+import "package:dev_house/screens/new_feed.dart";
 import "package:flutter/material.dart";
 
 Container float(
@@ -19,7 +19,7 @@ Container float(
                 ? () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const NewPost()),
+                      MaterialPageRoute(builder: (context) => const NewFeed()),
                     );
                   }
                 : selectedNavIndex == 0 && selectedTabIndex == 1

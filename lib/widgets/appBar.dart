@@ -5,6 +5,7 @@ import "../screens/search_screen.dart";
 
 AppBar app(BuildContext context, int selectedIndex) {
   return AppBar(
+    automaticallyImplyLeading: false,
     title: selectedIndex == 0
         ? const Text(
             'MentHer',
@@ -12,7 +13,7 @@ AppBar app(BuildContext context, int selectedIndex) {
           )
         : selectedIndex == 1
             ? const Text(
-                ' Projects',
+                ' Groups',
                 style: TextStyle(fontWeight: FontWeight.w600),
               )
             : selectedIndex == 2
@@ -30,7 +31,7 @@ AppBar app(BuildContext context, int selectedIndex) {
                         style: TextStyle(fontWeight: FontWeight.w600),
                       ),
     actions: [
-      selectedIndex == 0 || selectedIndex == 1 || selectedIndex == 2
+      selectedIndex == 0
           ? IconButton(
               icon: SizedBox(
                 height: 24,
@@ -57,7 +58,9 @@ AppBar app(BuildContext context, int selectedIndex) {
               ),
               onPressed: () {},
             )
-          : IconButton(
+          : const SizedBox(),
+      selectedIndex == 0
+          ? IconButton(
               icon: SizedBox(
                 height: 25,
                 width: 24,
@@ -70,7 +73,8 @@ AppBar app(BuildContext context, int selectedIndex) {
                       builder: (context) => const MessageScreen()),
                 );
               },
-            ),
+            )
+          : const SizedBox(),
     ],
   );
 }

@@ -1,6 +1,4 @@
-import 'package:dev_house/screens/home_screen.dart';
 import 'package:dev_house/screens/login_checker.dart';
-import 'package:dev_house/screens/login_or_register_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -23,6 +21,7 @@ class MyApp extends StatelessWidget {
       ),
       title: 'Job Portal',
       home: const LoginChecker(loggedIn: false),
+      // home: const HomeScreen(),
     );
   }
 }
