@@ -56,7 +56,9 @@ AppBar app(BuildContext context, int selectedIndex) {
                   color: Colors.black,
                 ),
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.popUntil(context, (route) => route.isFirst);
+              },
             )
           : const SizedBox(),
       selectedIndex == 0

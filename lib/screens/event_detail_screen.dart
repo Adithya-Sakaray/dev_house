@@ -1,4 +1,7 @@
+import 'package:dev_house/widgets/Auth/button_component.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class EventDetailScreen extends StatelessWidget {
 
@@ -6,8 +9,9 @@ class EventDetailScreen extends StatelessWidget {
   final String startTime;
   final String endTime;
   final String type;
+  final String url;
   final String description;
-  const EventDetailScreen({super.key, required this.title, required this.startTime, required this.endTime, required this.type, required this.description});
+  const EventDetailScreen({super.key, required this.title, required this.startTime, required this.endTime, required this.type, required this.description, required this.url});
 
   @override
   Widget build(BuildContext context) {
@@ -57,10 +61,18 @@ class EventDetailScreen extends StatelessWidget {
               SizedBox(height: 10),
 
               Text(
-                  "lorenv vkdvnd vvofvnd dfvoidvdv  idvnd vovihvidv vdovfi fvndfv ofvfvnv vdofvihfd vdfvninf ofdivhffn oihvfivhfd vfihvfv ihvfvidfv",
+                  description,
                 style: TextStyle(
                   fontSize: 16
                 ),
+              ),
+              const SizedBox(height: 15),
+
+              GestureDetector(
+                onTap: () {
+                  _launchUrl(url);
+                },
+                  child: ButtonComponent(text: "Apply")
               )
             ],
           ),
@@ -78,5 +90,11 @@ class EventDetailScreen extends StatelessWidget {
       iconData = Icons.people;
     }
     return Icon(iconData,size: 35,);
+  }
+
+  Future<void> _launchUrl(String url) async {
+    if (!await launchUrl(Uri.parse(url))) {
+      throw Exception('Could not launch $url');
+    }
   }
 }
