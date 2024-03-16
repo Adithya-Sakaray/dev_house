@@ -32,48 +32,131 @@ class _MessageScreenState extends State<MessageScreen> {
             Expanded(
               child: TabBarView(
                 children: [
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height,
-                    child: ListView.builder(
-                      itemCount: 15,
-                      itemBuilder: (context, index) {
-                        return GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => WebView(
-                                          appBarTitle: pc,
-                                        )));
-                          },
-                          child: MessageTile(
-                            title: pc,
-                          ),
-                        );
-                      },
-                    ),
+                  Column(
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const WebView(
+                                        appBarTitle: "Jonita",
+                                      )));
+                        },
+                        child: const MessageTile(
+                          title: "Jonita",
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const WebView(
+                                        appBarTitle: "Samantha",
+                                      )));
+                        },
+                        child: const MessageTile(
+                          title: "Samantha",
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const WebView(
+                                        appBarTitle: "Rashmika",
+                                      )));
+                        },
+                        child: const MessageTile(
+                          title: "Rashmika",
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const WebView(
+                                        appBarTitle: "Disha",
+                                      )));
+                        },
+                        child: const MessageTile(
+                          title: "Disha",
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const WebView(
+                                        appBarTitle: "Trisha",
+                                      )));
+                        },
+                        child: const MessageTile(
+                          title: "Trisha",
+                        ),
+                      ),
+                    ],
                   ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height,
-                    child: ListView.builder(
-                      itemCount: 15,
-                      itemBuilder: (context, index) {
-                        return GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => WebView(
-                                          appBarTitle: cohort,
-                                        )));
-                          },
-                          child: MessageTile(
-                            title: cohort,
-                          ),
-                        );
-                      },
-                    ),
-                  ),
+                  Column(
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const WebView(
+                                        appBarTitle: "Electrical",
+                                      )));
+                        },
+                        child: const MessageTile(
+                          title: "Electrical",
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const WebView(
+                                        appBarTitle: "Blockchain Cohort",
+                                      )));
+                        },
+                        child: const MessageTile(
+                          title: "Blockchain Cohort",
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const WebView(
+                                        appBarTitle: "Flutter",
+                                      )));
+                        },
+                        child: const MessageTile(
+                          title: "Flutter",
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const WebView(
+                                        appBarTitle: "Web Cohort",
+                                      )));
+                        },
+                        child: const MessageTile(
+                          title: "Web Cohort",
+                        ),
+                      ),
+                    ],
+                  )
                 ],
               ),
             ),

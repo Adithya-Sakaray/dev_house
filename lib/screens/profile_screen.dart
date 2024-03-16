@@ -9,10 +9,11 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Map<String, dynamic> profileData = {
-      'name': 'Abhishek',
-      'email': "abhishek24@gmail.com",
+      'name': 'Priya',
+      'email': "priya24@gmail.com",
       'role': 'Student',
-      'aboutMe': 'I am a passionate student interested in technology and programming.',
+      'aboutMe':
+          'I am a passionate student interested in technology and programming.',
       'skills': [
         'React JS',
         'Flutter',
@@ -80,8 +81,9 @@ class ProfileScreen extends StatelessWidget {
               Text(
                 profileData['education'],
               ),
-              const SizedBox(height: 15,),
-
+              const SizedBox(
+                height: 15,
+              ),
               const Text(
                 "Achievements",
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
