@@ -1,5 +1,4 @@
 import 'package:dev_house/widgets/jobs/customTile_J.dart';
-import 'package:dev_house/widgets/relevance.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
@@ -39,13 +38,7 @@ class _JobsPageState extends State<JobScreen>
     });
   }
 
-  String selectedSortOptionText = 'Relevance';
-  void updateSelectedOption(SortOption option) {
-    setState(() {
-      selectedSortOptionText =
-          option == SortOption.Relevance ? 'Relevance' : 'Latest';
-    });
-  }
+
 
   List<bool> chip = [false, false, false, false];
 
@@ -98,16 +91,3 @@ class _JobsPageState extends State<JobScreen>
   }
 }
 
-void _relBottomSheet(
-    BuildContext context, void Function(SortOption) updateSelectedOption) {
-  showModalBottomSheet(
-    context: context,
-    shape: const RoundedRectangleBorder(
-      borderRadius: BorderRadius.vertical(top: Radius.circular(15)),
-    ),
-    backgroundColor: const Color.fromARGB(255, 253, 249, 249),
-    builder: (BuildContext context) {
-      return RelevanceBottomSheet(updateSelectedOption: updateSelectedOption);
-    },
-  );
-}

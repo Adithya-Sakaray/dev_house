@@ -1,24 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_rx/src/rx_types/rx_types.dart';
 
+import '../../Models/PostModel.dart';
 import 'feed.dart';
 
 class ProfessionalFeed extends StatelessWidget {
-  const ProfessionalFeed({super.key});
+  final RxList professionalPosts;
+  const ProfessionalFeed({super.key, required this.professionalPosts});
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: MediaQuery.of(context).size.height,
       child: ListView.builder(
-        itemCount: 5,
-        itemBuilder: (index, context) {
-          return const feed(
-            name: "hari",
-            profileType: "Professional",
-            content: "adfsdvsd",
+        itemCount: professionalPosts.length,
+        itemBuilder: (context, index) {
+          return  feed(
+            name: professionalPosts[index]["userId"],
+            profileType: professionalPosts[index]["type"],
+            content: professionalPosts[index]["content"],
             likeb: false,
-            like: 0,
-            // imageUrl: "assets/images/link.jpeg",
+            like: professionalPosts[index]["likes"],
+            imageUrl: professionalPosts[index]["imageUrl"],
           );
         },
       ),

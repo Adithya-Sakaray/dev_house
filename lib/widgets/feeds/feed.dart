@@ -44,7 +44,8 @@ class feed extends StatelessWidget {
                 ),
                 const SizedBox(width: 12),
                 Text(
-                  name,
+                  name.substring(0,5),
+                  overflow: TextOverflow.ellipsis,
                   style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 16,
@@ -150,6 +151,6 @@ Widget isImageDefined(String? imageUrl) {
   if (imageUrl == null) {
     return Container();
   } else {
-    return Image.asset(imageUrl);
+    return Image.network(imageUrl);
   }
 }
