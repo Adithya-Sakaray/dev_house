@@ -1,25 +1,31 @@
 
 import 'package:get/get.dart';
-
-import '../Models/PostModel.dart';
 import '../Backend_services/post_manager.dart';
 
 class FeedPageController extends GetxController {
-  RxList<Post> allOfferModel = <Post>[].obs;
+  RxList studentPost = [].obs;
+  RxList professionalPost = [].obs;
+  RxList recruiterPost = [].obs;
 
   @override
   void onInit() {
     super.onInit();
+    print("FeedPageController Init called");
     fetchPosts(); // Call fetchData when HomeController is initialized
   }
 
   Future<void> fetchPosts() async {
     try {
-      final List<Post> myList = await PostsManager.fetchPostsByType("student");
-      allOfferModel.assignAll(myList);
+      final List<dynamic> myList1 = await PostsManager.fetchPostsByType("student");
+      final List<dynamic> myList2 = await PostsManager.fetchPostsByType("recruiter");
+      final List<dynamic> myList3 = await PostsManager.fetchPostsByType("professional");
+
+      studentPost.assignAll(myList1);
+      recruiterPost.assignAll(myList2);
+      professionalPost.assignAll(myList3);
     }
     catch (e) {
-      print("Error occured in controller fetch student posts");
+      print("Error occured in controller fetch student posts $e");
     }
   }
 }

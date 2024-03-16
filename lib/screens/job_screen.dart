@@ -38,6 +38,8 @@ class _JobsPageState extends State<JobScreen>
     });
   }
 
+
+
   List<bool> chip = [false, false, false, false];
 
   @override
@@ -88,3 +90,4 @@ class _JobsPageState extends State<JobScreen>
     );
   }
 }
+
