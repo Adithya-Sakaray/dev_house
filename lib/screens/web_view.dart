@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-class MessageScreen extends StatefulWidget {
-  const MessageScreen({super.key});
+class WebView extends StatefulWidget {
+  const WebView({super.key});
 
   @override
-  State<MessageScreen> createState() => _MessageScreenState();
+  State<WebView> createState() => _WebViewState();
 }
 
-class _MessageScreenState extends State<MessageScreen> {
+class _WebViewState extends State<WebView> {
   final chatWebViewController = WebViewController()
     ..setJavaScriptMode(JavaScriptMode.unrestricted)
     ..loadRequest(Uri.parse('https://deadsimplechat.com/gfgcOgwwN'));
