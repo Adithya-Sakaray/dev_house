@@ -29,7 +29,8 @@ class JobDetailScreen extends StatefulWidget {
       required this.location,
       required this.skills,
       required this.jobDesc,
-      required this.companyDesc})
+      required this.companyDesc,
+      required this.url})
       : super(key: key);
 
   @override
