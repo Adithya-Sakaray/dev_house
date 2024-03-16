@@ -6,7 +6,7 @@ import "../widgets/Auth/button_component.dart";
 import "../widgets/Auth/text_field_component.dart";
 
 class LoginScreen extends StatelessWidget {
-  void Function()? changeScreen;
+  final void Function()? changeScreen;
   LoginScreen({super.key, required this.changeScreen});
 
   final emailController = TextEditingController();
@@ -57,10 +57,10 @@ class LoginScreen extends StatelessWidget {
                       height: 10,
                     ),
                     TextFieldComponent(
-                        hintText: "Password",
-                        obscureText: true,
-                        controller: passwordController,
-                        keyboardType: TextInputType.text,
+                      hintText: "Password",
+                      obscureText: true,
+                      controller: passwordController,
+                      keyboardType: TextInputType.text,
                     ),
                     const SizedBox(
                       height: 10,

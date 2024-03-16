@@ -1,5 +1,4 @@
 import "package:dev_house/widgets/groups/newGroup.dart";
-import "package:dev_house/widgets/jobs/newJob.dart";
 import "package:dev_house/screens/new_feed.dart";
 import "package:flutter/material.dart";
 
@@ -17,10 +16,7 @@ Container float(
           child: FloatingActionButton(
             onPressed: selectedNavIndex == 0 && selectedTabIndex == 0
                 ? () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const NewFeed()),
-                    );
+                    _showBottomSheet(context);
                   }
                 : selectedNavIndex == 0 && selectedTabIndex == 1
                     ? () {
@@ -32,11 +28,7 @@ Container float(
                       }
                     : selectedNavIndex == 2
                         ? () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const NewJob()),
-                            );
+                            // _showBottomSheet(context);
                           }
                         : null,
             shape: RoundedRectangleBorder(
@@ -59,4 +51,16 @@ Container float(
           ),
         )
       : Container();
+}
+
+void _showBottomSheet(BuildContext context) {
+  showModalBottomSheet(
+    context: context,
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.vertical(top: Radius.circular(15)),
+    ),
+    builder: (BuildContext context) {
+      return const NewFeed();
+    },
+  );
 }

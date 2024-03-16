@@ -1,107 +1,165 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:image_picker/image_picker.dart';
+import 'dart:io';
 
 class NewFeed extends StatefulWidget {
   const NewFeed({super.key});
 
   @override
-  State<NewFeed> createState() => _NewPostState();
+  _NewFeedState createState() => _NewFeedState();
 }
 
-class _NewPostState extends State<NewFeed> {
-  final TextEditingController _titleController = TextEditingController();
+class _NewFeedState extends State<NewFeed> {
+  // Variables to store the selected reason and warning state
+
   final TextEditingController _descriptionController = TextEditingController();
-  int _titleMaxLength = 50;
   int _descriptionMaxLength = 1000;
-
-  @override
-  void initState() {
-    super.initState();
-    _titleController.addListener(_updateTitleCounter);
-    _descriptionController.addListener(_updateDescriptionCounter);
-  }
-
-  @override
-  void dispose() {
-    _titleController.dispose();
-    _descriptionController.dispose();
-    super.dispose();
-  }
-
-  void _updateTitleCounter() {
-    setState(() {
-      // Update title counter
-      _titleMaxLength = 50 - _titleController.text.length;
-    });
-  }
 
   void _updateDescriptionCounter() {
     setState(() {
-      // Update description counter
       _descriptionMaxLength = 1000 - _descriptionController.text.length;
     });
   }
 
+  Future<void> _getImage() async {
+    final picker = ImagePicker();
+    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Start a discussion'),
+    return Container(
+      padding: const EdgeInsets.only(
+        top: 13,
+        bottom: 25,
+        // left: 5,
+        // right: 10,
       ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            TextFormField(
-              controller: _titleController,
-              maxLength: 50,
-              decoration: InputDecoration(
-                labelText: 'Title',
-                counterText: '${_titleController.text.length}/$_titleMaxLength',
-                border: const OutlineInputBorder(),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          // Padding for the title
+          GestureDetector(
+            child: const Divider(
+              color: Colors.black,
+              height: 22,
+              thickness: 4,
+              indent: 165,
+              endIndent: 165,
+            ),
+            onTap: () {
+              Navigator.pop(context);
+            },
+          ),
+          const Row(
+            children: [
+              Padding(
+                  padding: EdgeInsets.only(
+                    left: 25,
+                    bottom: 15,
+                    top: 25,
+                  ),
+                  child: Text(
+                    'Create Post',
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                  )),
+            ],
+          ),
+          const SizedBox(
+            height: 15,
+          ),
+          // Options
+          Expanded(
+            child: Center(
+              child: SizedBox(
+                height: 400,
+                width: 350, // Set the desired height for the TextArea
+                child: TextField(
+                  controller: _descriptionController,
+                  maxLines: null, // Allows unlimited lines
+                  minLines: 5, // Set the minimum number of lines
+                  keyboardType: TextInputType.multiline,
+                  style: const TextStyle(fontSize: 18.0),
+                  decoration: InputDecoration(
+                    label: const Text('Description'),
+
+                    counterText:
+                        '${_descriptionController.text.length}/$_descriptionMaxLength',
+                    border: const OutlineInputBorder(),
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 16.0, horizontal: 12.0),
+                    // Customize other InputDecoration properties as needed
+                  ),
+                  onChanged: (_) {
+                    _updateDescriptionCounter();
+                  },
+                ),
               ),
             ),
-            const SizedBox(height: 16),
-            TextFormField(
-              controller: _descriptionController,
-              maxLength: 1000,
-              maxLines: 10,
-              decoration: InputDecoration(
-                labelText: 'Description',
-                counterText:
-                    '${_descriptionController.text.length}/$_descriptionMaxLength',
-                border: const OutlineInputBorder(),
-              ),
+          ),
+          // const SizedBox(height: 8),
+          Padding(
+            padding: const EdgeInsets.only(
+              left: 320,
+              bottom: 12.5,
             ),
-            const SizedBox(height: 16),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                IconButton(
-                  onPressed: () {
-                    // Add image functionality
-                  },
-                  icon: const Icon(Icons.image),
-                  tooltip: 'Add Image',
-                ),
-                IconButton(
-                  onPressed: () {
-                    // Add video functionality
-                  },
-                  icon: const Icon(Icons.video_library),
-                  tooltip: 'Add Video',
-                ),
-              ],
-            ),
-            const SizedBox(height: 16),
-            ElevatedButton(
+            child: IconButton(
               onPressed: () {
-                // Submit post functionality
+                _getImage();
               },
-              child: const Text('Submit'),
+              icon: const Icon(
+                Icons.image_rounded,
+                size: 30,
+                color: Colors.black,
+              ),
             ),
-          ],
-        ),
+          ),
+
+          const SizedBox(height: 10),
+          Align(
+            alignment: Alignment.center,
+            child: Container(
+              width: double.infinity, // Make the button span the entire width
+              margin: const EdgeInsets.symmetric(
+                  horizontal: 22.5), // Add margin for spacing
+              child: ElevatedButton(
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.resolveWith<Color>(
+                    (states) {
+                      return const Color.fromARGB(255, 7, 42, 240);
+                    },
+                  ),
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(
+                          30), // Adjust the border radius as needed
+                    ),
+                  ),
+                ),
+                onPressed: _descriptionController.text.isNotEmpty
+                    ? () {
+                        // Handle the submission logic here
+
+                        Navigator.pop(context); // Close the bottom sheet
+                      }
+                    : null,
+                child: const Padding(
+                  padding: EdgeInsets.symmetric(
+                      vertical: 12.0), // Adjust vertical padding as needed
+                  child: Text(
+                    'Submit',
+                    style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.white), // Adjust font size as needed
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
