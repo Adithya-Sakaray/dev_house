@@ -34,8 +34,6 @@ class ProfileCreationScreen extends StatelessWidget {
                       SignupPageProgessIndicator(fillColor: purpleColor),
                       SignupPageProgessIndicator(
                           fillColor: greyColor),
-                      SignupPageProgessIndicator(
-                          fillColor: greyColor),
                     ],
                   ),
                   const SizedBox(

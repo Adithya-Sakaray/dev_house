@@ -48,7 +48,6 @@ class _SkillSelectionScreenState extends State<SkillSelectionScreen> {
                         ),
                         const SignupPageProgessIndicator(fillColor: purpleColor),
                         const SignupPageProgessIndicator(fillColor: purpleColor),
-                        const SignupPageProgessIndicator(fillColor: greyColor),
                       ],
                     ),
                     const SizedBox(
@@ -143,7 +142,7 @@ class _SkillSelectionScreenState extends State<SkillSelectionScreen> {
                               MaterialPageRoute(
                                   builder: (context) => const HomeScreen()));
                         },
-                        child: const ButtonComponent(text: "Next")),
+                        child: const ButtonComponent(text: "Get Started")),
                   ],
                 ),
               ),

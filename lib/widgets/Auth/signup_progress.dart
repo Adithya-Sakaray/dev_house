@@ -7,7 +7,7 @@ class SignupPageProgessIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 100,
+      width: 150,
       padding: const EdgeInsets.all(3.5),
       decoration: BoxDecoration(
           color: fillColor, borderRadius: BorderRadius.circular(15)),
