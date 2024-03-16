@@ -1,5 +1,6 @@
 import "package:dev_house/widgets/groups/newGroup.dart";
 import "package:dev_house/screens/new_feed.dart";
+import "package:dev_house/screens/new_job.dart";
 import "package:flutter/material.dart";
 
 Container float(
@@ -28,7 +29,11 @@ Container float(
                       }
                     : selectedNavIndex == 2
                         ? () {
-                            // _showBottomSheet(context);
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const NewJob()),
+                            );
                           }
                         : null,
             shape: RoundedRectangleBorder(

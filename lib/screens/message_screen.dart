@@ -18,7 +18,7 @@ class _MessageScreenState extends State<MessageScreen> {
     MediaQueryData mediaQueryData = MediaQuery.of(context);
     return Scaffold(
         appBar: AppBar(
-          title: const Text("Flutter WebView"),
+          title: const Text("SD"),
         ),
         body: SingleChildScrollView(
           child: Column(
