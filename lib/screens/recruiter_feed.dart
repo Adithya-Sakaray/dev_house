@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'feed.dart';
+import '../widgets/feeds/feed.dart';
 
 class RecruiterFeed extends StatelessWidget {
   final RxList recruiterPosts;

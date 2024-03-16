@@ -1,14 +1,13 @@
 import 'dart:async';
 
 import 'package:dev_house/Controller/feed_page_controller.dart';
-import 'package:dev_house/widgets/feeds/professional_feed.dart';
-import 'package:dev_house/widgets/feeds/recruiter_feed.dart';
+import 'package:dev_house/screens/professional_feed.dart';
+import 'package:dev_house/screens/recruiter_feed.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 
-import '../Models/PostModel.dart';
-import '../widgets/feeds/student_feed.dart';
+import 'student_feed.dart';
 
 class FeedPage extends StatefulWidget {
   const FeedPage({

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 
-import '../../Models/PostModel.dart';
-import 'feed.dart';
+import '../widgets/feeds/feed.dart';
 
 class ProfessionalFeed extends StatelessWidget {
   final RxList professionalPosts;
