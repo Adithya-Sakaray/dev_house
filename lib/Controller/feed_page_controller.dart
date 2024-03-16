@@ -30,6 +30,12 @@ class FeedPageController extends GetxController {
   }
 
   Future<void> uploadPost(String content) async {
-
+    try {
+      
+      var postID = PostsManager.uploadPost("b9250706-5a76-4778-ac8d-688be4cc3de7", content);
+      
+    } catch(e) {
+      print("Error occured while uploading $e");
+    }
   }
 }

@@ -1,6 +1,8 @@
+import 'package:dev_house/Controller/feed_page_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 
@@ -44,6 +46,7 @@ class _NewFeedState extends State<NewFeed> {
 
   @override
   Widget build(BuildContext context) {
+    FeedPageController feedPageController = Get.find<FeedPageController>();
     return Container(
       padding: const EdgeInsets.only(
         top: 13,
@@ -166,6 +169,7 @@ class _NewFeedState extends State<NewFeed> {
                     _descriptionController.text.isNotEmpty || _imageFile != null
                         ? () {
                             // Handle the submission logic here
+                            feedPageController.uploadPost(_descriptionController.text);
                             Navigator.pop(context);
                           }
                         : null,
