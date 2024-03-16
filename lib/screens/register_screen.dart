@@ -98,7 +98,8 @@ class SignupScreen extends StatelessWidget {
                                 email: emailController.text,
                                 password: passwordController.text,
                                 role: _selectedOption.value
-                            )));
+                            )
+                            )).then((value) => clearFields());
                           }
                         }
 
@@ -152,5 +153,10 @@ class SignupScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+  void clearFields() {
+    emailController.clear();
+    passwordController.clear();
+    confirmPasswordController.clear();
   }
 }
