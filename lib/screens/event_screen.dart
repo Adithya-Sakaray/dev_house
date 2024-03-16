@@ -30,7 +30,8 @@ class EventScreen extends StatelessWidget {
                               startTime: eventController.eventList[index]["startTime"],
                               endTime: eventController.eventList[index]["endTime"],
                               type: eventController.eventList[index]["type"],
-                              description: eventController.eventList[index]["description"])));
+                              description: eventController.eventList[index]["description"],
+                              url: eventController.eventList[index]["url"],)));
                     },
                     child: EventContainer(
                         title: eventController.eventList[index]["title"],

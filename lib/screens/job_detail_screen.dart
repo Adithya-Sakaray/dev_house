@@ -1,9 +1,11 @@
 import 'dart:ffi';
 
+import 'package:dev_house/widgets/Auth/button_component.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:share/share.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../widgets/jobs/skills.dart';
 
@@ -15,6 +17,7 @@ class JobDetailScreen extends StatefulWidget {
   final String location;
   final List<dynamic> skills;
   final String jobDesc;
+  final String url;
   final String companyDesc;
 
   const JobDetailScreen(
@@ -247,23 +250,20 @@ class _JobDetailState extends State<JobDetailScreen> {
             ),
             const SizedBox(height: 15),
             // Apply button
-            ElevatedButton(
-              onPressed: () {
-                // Add functionality to apply for the job
-              },
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all<Color>(
-                  const Color.fromARGB(255, 7, 42, 240),
-                ),
-              ),
-              child: const Text(
-                'Apply Now',
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
+            GestureDetector(
+                onTap: () {
+                  _launchUrl(widget.url);
+                },
+                child: const ButtonComponent(text: "Apply now"))
           ],
         ),
       ),
     );
+  }
+
+  Future<void> _launchUrl(String url) async {
+    if (!await launchUrl(Uri.parse(url))) {
+      throw Exception('Could not launch $url');
+    }
   }
 }

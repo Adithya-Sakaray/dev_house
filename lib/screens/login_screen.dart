@@ -1,3 +1,4 @@
+import "package:dev_house/screens/home_screen.dart";
 import "package:flutter/material.dart";
 import "package:flutter/widgets.dart";
 
@@ -79,6 +80,9 @@ class LoginScreen extends StatelessWidget {
                     GestureDetector(
                       onTap: () {
                         //Handle auth
+                        if(emailController.text != "" && passwordController.text != ""){
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeScreen())).then((value) => clearFields());
+                        }
                       },
                       child: const ButtonComponent(
                         text: "Log In",
@@ -114,5 +118,10 @@ class LoginScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void clearFields() {
+    emailController.clear();
+    passwordController.clear();
   }
 }
