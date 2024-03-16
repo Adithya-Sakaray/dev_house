@@ -2,6 +2,7 @@
 import "package:dev_house/screens/profile_creation_screen.dart";
 import "package:dev_house/widgets/Auth/dropdown_menu.dart";
 import "package:flutter/material.dart";
+import "package:get/get.dart";
 import "../Utils/theme.dart";
 import "../widgets/Auth/button_component.dart";
 import "../widgets/Auth/text_field_component.dart";
@@ -16,6 +17,7 @@ class SignupScreen extends StatelessWidget {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final confirmPasswordController = TextEditingController();
+  RxString _selectedOption = "student".obs;
 
   @override
   Widget build(BuildContext context) {
@@ -90,7 +92,13 @@ class SignupScreen extends StatelessWidget {
                     GestureDetector(
                       onTap: () async {
                         // Handle auth
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>ProfileCreationScreen()));
+                        if(confirmPasswordController.text == passwordController.text) {
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>ProfileCreationScreen(
+                            email: emailController.text,
+                            password: passwordController.text,
+                            role: _selectedOption.value
+                        )));
+                        }
                       },
                       child: const ButtonComponent(
                         text: "Sign Up",

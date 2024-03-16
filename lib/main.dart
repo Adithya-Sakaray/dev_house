@@ -2,6 +2,7 @@ import 'package:dev_house/screens/login_checker.dart';
 import 'package:flutter/material.dart';
 
 void main() {
+
   runApp(const MyApp());
 }
 
@@ -9,7 +10,8 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context)  {
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
@@ -20,7 +22,7 @@ class MyApp extends StatelessWidget {
         ),
       ),
       title: 'Job Portal',
-      home: const LoginChecker(loggedIn: false),
+      home: const LoginChecker(loggedIn: false,),
       // home: const HomeScreen(),
     );
   }

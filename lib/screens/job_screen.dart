@@ -1,6 +1,11 @@
+import 'package:dev_house/Controller/job_controller.dart';
 import 'package:dev_house/widgets/jobs/customTile_J.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+
+import 'job_detail_screen.dart';
 
 class JobScreen extends StatefulWidget {
   const JobScreen({Key? key}) : super(key: key);
@@ -38,10 +43,12 @@ class _JobsPageState extends State<JobScreen>
     });
   }
 
-  List<bool> chip = [false, false, false, false];
 
   @override
   Widget build(BuildContext context) {
+
+    final JobController jobController = Get.find<JobController>();
+
     return Scaffold(
       body: SingleChildScrollView(
         child: RefreshIndicator(
@@ -70,12 +77,34 @@ class _JobsPageState extends State<JobScreen>
               SizedBox(
                 height: MediaQuery.of(context).size.height,
                 child: ListView.builder(
-                  itemCount: 6,
+                  itemCount: jobController.jobsList.length,
                   itemBuilder: (context, index) {
-                    return const CustomTile_J(
-                      title: 'Design',
-                      subtitle: '34554' " members",
-                      description: 'Talk, vibe, relax, repeat. Do whatever you',
+                    return  Obx((){
+                      return GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder:
+                                      (context)=>
+                                      JobDetailScreen(
+                                          companyName: jobController.jobsList[index]["companyName"],
+                                          role: jobController.jobsList[index]["title"],
+                                          type: jobController.jobsList[index]["type"],
+                                          location: jobController.jobsList[index]["location"],
+                                          skills: jobController.jobsList[index]["skillsRequired"],
+                                          jobDesc: jobController.jobsList[index]["description"],
+                                          companyDesc: jobController.jobsList[index]["companyDescription"]
+                                      )));
+                        },
+                        child: CustomTile_J(
+                          title: jobController.jobsList[index]["title"],
+                          companyName: jobController.jobsList[index]["companyName"],
+                          type: jobController.jobsList[index]["type"],
+                          location: jobController.jobsList[index]["location"],
+                        ),
+                      );
+                    },
                     );
                   },
                 ),
@@ -88,3 +117,4 @@ class _JobsPageState extends State<JobScreen>
     );
   }
 }
+

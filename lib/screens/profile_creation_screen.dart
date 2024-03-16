@@ -8,7 +8,10 @@ import "../widgets/Auth/button_component.dart";
 import "../widgets/Auth/signup_progress.dart";
 
 class ProfileCreationScreen extends StatelessWidget {
-  ProfileCreationScreen({super.key});
+  final String email;
+  final String password;
+  final String role;
+  ProfileCreationScreen({super.key, required this.email, required this.password, required this.role});
 
   final TextEditingController usernameController = TextEditingController();
   final TextEditingController phonenumberController = TextEditingController();
@@ -57,9 +60,9 @@ class ProfileCreationScreen extends StatelessWidget {
                   const SizedBox(
                     height: 50,
                   ),
-                  Center(
+                  const Center(
                     child: Stack(children: [
-                      const Icon(Icons.account_circle, size: 95,),
+                      Icon(Icons.account_circle, size: 95,),
 
                     ]),
                   ),
@@ -102,6 +105,7 @@ class ProfileCreationScreen extends StatelessWidget {
                   ),
                   GestureDetector(
                       onTap: () {
+
                         Navigator.push(
                             context,
                             MaterialPageRoute(

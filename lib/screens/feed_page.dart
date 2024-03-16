@@ -1,11 +1,13 @@
 import 'dart:async';
 
-import 'package:dev_house/widgets/feeds/professional_feed.dart';
-import 'package:dev_house/widgets/feeds/recruiter_feed.dart';
+import 'package:dev_house/Controller/feed_page_controller.dart';
+import 'package:dev_house/screens/professional_feed.dart';
+import 'package:dev_house/screens/recruiter_feed.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:get/get.dart';
 
-import '../widgets/feeds/student_feed.dart';
+import 'student_feed.dart';
 
 class FeedPage extends StatefulWidget {
   const FeedPage({
@@ -20,53 +22,14 @@ class _FeedPageState extends State<FeedPage>
   int selectedButtonIndex = 0;
   int selectedButtonIndexg = 0;
   int selectedTabIndex = 0;
-  // late TabController _tabController;
 
-  final ScrollController _scrollController = ScrollController();
-  @override
-  void initState() {
-    super.initState();
-    // _tabController = TabController(length: 2, vsync: this);
-    // _tabController.addListener(_handleTabChange);
-    _scrollController.addListener(() {
-      if (_scrollController.position.userScrollDirection ==
-          ScrollDirection.forward) {
-        setState(() {});
-      } else if (_scrollController.position.userScrollDirection ==
-          ScrollDirection.reverse) {
-        setState(() {});
-      }
-    });
-  }
 
-  // void _handleTabChange() {
-  //   setState(() {
-  //     selectedTabIndex = _tabController.index;
-  //   });
-  //   widget.onTabIndexChange(selectedTabIndex);
-  // }
 
-  Future<void> _handleRefresh() async {
-    // Implement your refresh logic here
-    // For example, you can fetch new data from a network or update existing data
-    await Future.delayed(const Duration(seconds: 2)); // Simulating a delay
-    setState(() {
-      // Update state after refresh
-    });
-  }
-
-  bool ti = false;
-  String text = "dfdsdsdvsdvsdvsbjvbsdjbvjsbvjsbdjvdssdvsdsdbsvjbd";
-  String imageUrl = "assets/images/link.jpeg";
-  bool likeb = false;
-  int like = 0;
-  bool showFullPost = false;
 
   @override
   Widget build(BuildContext context) {
-    return RefreshIndicator(
-      onRefresh: _handleRefresh,
-      child: SingleChildScrollView(
+    final FeedPageController feedPageController = Get.find<FeedPageController>();
+    return SingleChildScrollView(
         child: Column(
           children: [
             Container(
@@ -88,7 +51,6 @@ class _FeedPageState extends State<FeedPage>
                       setState(() {
                         selectedButtonIndexg = 0;
                       });
-                      _handleRefresh();
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: selectedButtonIndexg == 0
@@ -114,7 +76,6 @@ class _FeedPageState extends State<FeedPage>
                       setState(() {
                         selectedButtonIndexg = 1;
                       });
-                      _handleRefresh();
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: selectedButtonIndexg == 1
@@ -140,7 +101,6 @@ class _FeedPageState extends State<FeedPage>
                       setState(() {
                         selectedButtonIndexg = 2;
                       });
-                      _handleRefresh();
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: selectedButtonIndexg == 2
@@ -166,20 +126,19 @@ class _FeedPageState extends State<FeedPage>
             // if (selectedButtonIndex == 0) const StudentFeed(),
             // if (selectedButtonIndex == 1) const ProfessionalFeed(),
             // if (selectedButtonIndex == 2) const RecruiterFeed(),
-            displayFeeds(selectedButtonIndexg),
+            displayFeeds(selectedButtonIndexg, feedPageController.studentPost, feedPageController.professionalPost, feedPageController.recruiterPost),
           ],
         ),
-      ),
-    );
+      );
   }
 
-  Widget displayFeeds(int index) {
+  Widget displayFeeds(int index,RxList studentPosts,RxList professionalPosts, RxList recruiterPosts) {
     if (index == 0) {
-      return const StudentFeed();
+      return  StudentFeed(studentPosts: studentPosts,);
     } else if (index == 1) {
-      return const ProfessionalFeed();
+      return  ProfessionalFeed(professionalPosts: professionalPosts);
     } else {
-      return const RecruiterFeed();
+      return  RecruiterFeed(recruiterPosts: recruiterPosts,);
     }
   }
 }
