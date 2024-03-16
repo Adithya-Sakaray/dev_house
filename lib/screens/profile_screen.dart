@@ -1,16 +1,29 @@
-
 import 'package:flutter/material.dart';
-
 import '../widgets/Profile/about_me_container.dart';
 import '../widgets/Profile/name_container.dart';
 import '../widgets/jobs/skills.dart';
 
 class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key});
+  const ProfileScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-
+    Map<String, dynamic> profileData = {
+      'name': 'Abhishek',
+      'email': "abhishek24@gmail.com",
+      'role': 'Student',
+      'aboutMe': 'I am a passionate student interested in technology and programming.',
+      'skills': [
+        'React JS',
+        'Flutter',
+        'GCP',
+        'Solana'
+        // Add more skills as needed
+      ],
+      'education': 'Bachelor of Science in Computer Science - XYZ University',
+      'achievements': 'Winner of the Coding Competition 2020.',
+      'experience': 'Internship at ABC Company (2021)',
+    };
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -20,10 +33,10 @@ class ProfileScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const ProfileNameContainer(
+              ProfileNameContainer(
                 icon: Icons.account_circle,
-                userName: 'Name',
-                role: "Student",
+                userName: profileData['name'],
+                role: profileData['role'],
               ),
               const SizedBox(
                 height: 15,
@@ -35,7 +48,9 @@ class ProfileScreen extends StatelessWidget {
               const SizedBox(
                 height: 5,
               ),
-              const AboutMeContainer(),
+              AboutMeContainer(
+                  email: profileData['email'],
+                  description: profileData['aboutMe']),
               const SizedBox(
                 height: 15,
               ),
@@ -49,19 +64,11 @@ class ProfileScreen extends StatelessWidget {
               Center(
                 child: Wrap(
                   spacing: 6.0,
-                  children: jobSkills([
-                    "skill1",
-                    "skill1",
-                    "skill1",
-                    "skill1",
-                    "skill1",
-                    "skill1",
-                    "skill1",
-                  ]),
+                  children: jobSkills(profileData['skills']),
                 ),
               ),
               const SizedBox(
-                height: 35,
+                height: 25,
               ),
               const Text(
                 "Education",
@@ -70,11 +77,11 @@ class ProfileScreen extends StatelessWidget {
               const SizedBox(
                 height: 5,
               ),
-              const Text(
-                  "mfnvdkfjnvfjvfdv dfvjkfvf vmdfvkdfvd fkjbvd vfdn vv  vfjv fdvdfv djv dfv fdvjkdf vfv fv jf"),
-              const SizedBox(
-                height: 15,
+              Text(
+                profileData['education'],
               ),
+              const SizedBox(height: 15,),
+
               const Text(
                 "Achievements",
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
@@ -82,8 +89,9 @@ class ProfileScreen extends StatelessWidget {
               const SizedBox(
                 height: 5,
               ),
-              const Text(
-                  "mfnvdkfjnvfjvfdv dfvjkfvf vmdfvkdfvd fkjbvd vfdn vv  vfjv fdvdfv djv dfv fdvjkdf vfv fv jf"),
+              Text(
+                profileData['achievements'],
+              ),
               const SizedBox(
                 height: 15,
               ),
@@ -94,14 +102,13 @@ class ProfileScreen extends StatelessWidget {
               const SizedBox(
                 height: 5,
               ),
-              const Text(
-                  "mfnvdkfjnvfjvfdv dfvjkfvf vmdfvkdfvd fkjbvd vfdn vv  vfjv fdvdfv djv dfv fdvjkdf vfv fv jf")
+              Text(
+                profileData['experience'],
+              ),
             ],
           ),
         ),
-      )
+      ),
     );
   }
-
-
 }

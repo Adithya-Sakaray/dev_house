@@ -3,7 +3,6 @@ import 'package:dev_house/widgets/jobs/customTile_J.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 import 'job_detail_screen.dart';
 
@@ -94,7 +93,8 @@ class _JobsPageState extends State<JobScreen>
                                           location: jobController.jobsList[index]["location"],
                                           skills: jobController.jobsList[index]["skillsRequired"],
                                           jobDesc: jobController.jobsList[index]["description"],
-                                          companyDesc: jobController.jobsList[index]["companyDescription"]
+                                          companyDesc: jobController.jobsList[index]["companyDescription"],
+                                          url: jobController.jobsList[index]["url"],
                                       )));
                         },
                         child: CustomTile_J(

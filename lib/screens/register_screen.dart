@@ -92,13 +92,16 @@ class SignupScreen extends StatelessWidget {
                     GestureDetector(
                       onTap: () async {
                         // Handle auth
-                        if(confirmPasswordController.text == passwordController.text) {
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=>ProfileCreationScreen(
-                            email: emailController.text,
-                            password: passwordController.text,
-                            role: _selectedOption.value
-                        )));
+                        if(emailController.text.isNotEmpty && passwordController.text.isNotEmpty && confirmPasswordController.text.isNotEmpty){
+                          if(confirmPasswordController.text == passwordController.text) {
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>ProfileCreationScreen(
+                                email: emailController.text,
+                                password: passwordController.text,
+                                role: _selectedOption.value
+                            )));
+                          }
                         }
+
                       },
                       child: const ButtonComponent(
                         text: "Sign Up",
