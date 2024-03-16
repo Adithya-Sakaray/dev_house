@@ -9,7 +9,7 @@ class EventManager {
     final response = await http.get(Uri.parse('$baseUrl'));
     if (response.statusCode == 200) {
       final List<dynamic> jsonData = json.decode(response.body);
-      print(jsonData);
+      // print(jsonData);
       return jsonData;
     } else {
       print("Error in manager events");
