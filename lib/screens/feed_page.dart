@@ -4,9 +4,6 @@ import 'package:dev_house/widgets/groups/customTile_G.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
-import 'group_detail_screen.dart';
-import 'others_profile_screen.dart';
-
 class FeedPage extends StatefulWidget {
   final void Function(int) onTabIndexChange;
 
@@ -60,27 +57,11 @@ class _FeedPageState extends State<FeedPage>
     Tab(text: 'Groups'),
   ];
   bool ti = false;
-  String text = "dfdsd";
+  String text = "dfdsdsdvsdvsdvsbjvbsdjbvjsbvjsbdjvdssdvsdsdbsvjbd";
   String imageUrl = "assets/images/link.jpeg";
-  bool likeb = false; // Change here
+  bool likeb = false;
   int like = 0;
   bool showFullPost = false;
-  bool _showAnimatedIconl = false;
-  void doubleTap() {
-    setState(() {
-      // Toggle the like button
-      likeb = !likeb;
-
-      // If the like button is now selected, ensure dislike button is deselected
-
-      _showAnimatedIconl = true;
-      Timer(const Duration(milliseconds: 500), () {
-        setState(() {
-          _showAnimatedIconl = false;
-        });
-      });
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -100,14 +81,7 @@ class _FeedPageState extends State<FeedPage>
                     unselectedLabelColor: Colors.grey.shade700,
                     labelColor: Colors.black,
                     indicatorColor: Colors.black,
-                    // onTap: (int ind) {
-                    //   setState(() {
-                    //     selectedTabIndex = ind;
-                    //   });
-                    //   widget.onTabIndexChange(selectedTabIndex);
-                    // },
                   ),
-                  // backgroundColor: Colors.white,
                 )
               ];
             },
@@ -116,117 +90,72 @@ class _FeedPageState extends State<FeedPage>
               children: [
                 RefreshIndicator(
                   onRefresh: _handleRefresh,
-                  child: Column(
-                    children: [
-                      Divider(
-                        height: 1,
-                        thickness: 8.5,
-                        color: Colors.grey.shade200,
-                      ),
-
-                      Container(
-                        width: MediaQuery.of(context).size.width,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12.0),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.5),
-                              spreadRadius: 2,
-                              blurRadius: 5,
-                              offset: const Offset(0, 3),
+                  child: ListView.builder(
+                    itemCount: 3, // Assuming you have 3 posts
+                    itemBuilder: (context, index) {
+                      return Column(
+                        children: [
+                          Container(
+                            width: MediaQuery.of(context).size.width,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(12.0),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.5),
+                                  spreadRadius: 2,
+                                  blurRadius: 5,
+                                  offset: const Offset(0, 3),
+                                ),
+                              ],
                             ),
-                          ],
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: [
-                            GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                        const OthersProfileScreen(),
-                                  ),
-                                );
-                              },
-                              child: Container(
-                                //bar
-                                padding: const EdgeInsets.only(
-                                  top: 8,
-                                  left: 8,
-                                  right: 8,
-                                  bottom: 8,
-                                ), //bar size
-                                color: Colors.white,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: [
+                                Container(
+                                  //bar
+                                  padding: const EdgeInsets.only(
+                                    top: 10,
+                                    left: 12,
+                                    right: 8,
+                                    bottom: 10,
+                                  ), //bar size
+                                  color: Colors.white,
 
-                                child: Row(
-                                  children: [
-                                    CircleAvatar(
-                                      radius: 20,
-                                      backgroundColor: Colors.grey[200],
-                                    ),
-                                    const SizedBox(width: 12),
-                                    const Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          'Username',
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 16,
-                                          ),
+                                  child: Row(
+                                    children: [
+                                      CircleAvatar(
+                                        radius: 20,
+                                        backgroundColor: Colors.grey[200],
+                                      ),
+                                      const SizedBox(width: 12),
+                                      const Text(
+                                        'Username',
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 16,
                                         ),
-                                        Row(
-                                          children: [
-                                            Icon(
-                                              Icons.verified,
-                                              color: Colors.blue,
-                                              size: 16,
-                                            ),
-                                            Text(
-                                              'Verified Professional',
-                                              style: TextStyle(
-                                                fontSize: 12,
-                                                color: Colors.blue,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                    const Spacer(),
-                                    Transform.translate(
-                                      offset: const Offset(9.5, 0),
-                                      child: GestureDetector(
-                                        onTap: () {
-                                          setState(() {
-                                            Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder: (context) =>
-                                                    const GroupDetailScreen(),
-                                              ),
-                                            );
-                                          });
-                                        },
+                                      ),
+                                      const Spacer(),
+                                      Transform.translate(
+                                        offset: const Offset(-10, 0),
                                         child: Container(
                                           padding: const EdgeInsets.symmetric(
                                             horizontal: 12,
                                           ),
                                           decoration: BoxDecoration(
-                                            color: Colors.lightGreen[200],
-                                            borderRadius:
-                                                BorderRadius.circular(20.0),
-                                          ),
+                                              color: Colors.white,
+                                              borderRadius:
+                                              BorderRadius.circular(20.0),
+                                              border: Border.all(
+                                                color: Colors.grey.shade300,
+                                              )),
                                           constraints: const BoxConstraints(
                                             minWidth: 0,
                                             minHeight: 32,
                                           ),
                                           child: const Center(
                                             child: Text(
-                                              'Finance',
+                                              'Student',
                                               style: TextStyle(
                                                 fontSize: 11,
                                                 color: Colors.black,
@@ -236,40 +165,19 @@ class _FeedPageState extends State<FeedPage>
                                           ),
                                         ),
                                       ),
-                                    ),
-                                    Transform.translate(
-                                      offset: const Offset(8,
-                                          0), // Adjust the X and Y offset as needed
-                                      child: IconButton(
-                                        icon: const Icon(
-                                          Icons.more_vert,
-                                          size: 22,
-                                        ),
-                                        onPressed: () {
-                                          // Open bottom sheet menu
-                                        },
-                                      ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
-                              ),
+                              ],
                             ),
-                          ],
-                        ),
-                      ),
-                      if (ti == false)
-                        GestureDetector(
-                          onDoubleTap: () {
-                            doubleTap();
-                          },
-                          child: Column(
+                          ),
+                          Column(
                             crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: [
                               Container(
                                 color: Colors.grey[100],
                                 padding: const EdgeInsets.only(
                                   top: 14.0,
-                                  // bottom: 0, //change
                                   left: 13.5,
                                   right: 13.5,
                                 ),
@@ -293,13 +201,52 @@ class _FeedPageState extends State<FeedPage>
                                   ],
                                 ),
                               ),
-                              Image.asset(imageUrl),
+                              if (ti == false) Image.asset(imageUrl),
                             ],
                           ),
-                        ),
-
-                      // ListView for feed items
-                    ],
+                          Container(
+                            padding: const EdgeInsets.only(
+                              top: 11,
+                              left: 12.0,
+                              right: 12.0,
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                GestureDetector(
+                                  onTap: () {
+                                    setState(() {
+                                      likeb = !likeb;
+                                    });
+                                  },
+                                  child: likeb
+                                      ? const Icon(
+                                    Icons.favorite,
+                                    color: Colors.red,
+                                    size: 22,
+                                  )
+                                      : const Icon(
+                                    Icons.favorite_outline,
+                                    color: Colors.black,
+                                    size: 22,
+                                  ),
+                                ),
+                                const SizedBox(width: 6),
+                                const Text("Like"),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 12,
+                          ),
+                          Divider(
+                            height: 1,
+                            thickness: 5,
+                            color: Colors.grey.shade200,
+                          ),
+                        ],
+                      );
+                    },
                   ),
                 ),
                 SingleChildScrollView(
@@ -336,7 +283,7 @@ class _FeedPageState extends State<FeedPage>
                                     borderRadius: BorderRadius.circular(20.0),
                                   ),
                                   minimumSize: const Size(0, 35),
-                                  elevation: 0, // Remove the elevation shadow
+                                  elevation: 0,
                                 ),
                                 child: const Text(
                                   'All groups',
@@ -377,39 +324,39 @@ class _FeedPageState extends State<FeedPage>
                         ),
                         selectedButtonIndexg == 0
                             ? SizedBox(
-                                height: MediaQuery.of(context).size.height,
-                                child: ListView.builder(
-                                  itemCount: 15,
-                                  itemBuilder: (context, index) {
-                                    return CustomTile_G(
-                                      title: 'Design',
-                                      subtitle: '34554' " members",
-                                      description:
-                                          'Talk, vibe, relax, repeat. Do whatever you',
-                                      onPressed: () {
-                                        // Action to perform when button is pressed
-                                      },
-                                    );
-                                  },
-                                ),
-                              )
+                          height: MediaQuery.of(context).size.height,
+                          child: ListView.builder(
+                            itemCount: 15,
+                            itemBuilder: (context, index) {
+                              return CustomTile_G(
+                                title: 'Design',
+                                subtitle: '34554' " members",
+                                description:
+                                'Talk, vibe, relax, repeat. Do whatever you',
+                                onPressed: () {
+                                  // Action to perform when button is pressed
+                                },
+                              );
+                            },
+                          ),
+                        )
                             : SizedBox(
-                                height: MediaQuery.of(context).size.height,
-                                child: ListView.builder(
-                                  itemCount: 4,
-                                  itemBuilder: (context, index) {
-                                    return CustomTile_G(
-                                      title: 'Finance',
-                                      subtitle: '2354' " members",
-                                      description:
-                                          'Talk, vibe, relax, repeat. Do whatever you',
-                                      onPressed: () {
-                                        // Action to perform when button is pressed
-                                      },
-                                    );
-                                  },
-                                ),
-                              ),
+                          height: MediaQuery.of(context).size.height,
+                          child: ListView.builder(
+                            itemCount: 4,
+                            itemBuilder: (context, index) {
+                              return CustomTile_G(
+                                title: 'Finance',
+                                subtitle: '2354' " members",
+                                description:
+                                'Talk, vibe, relax, repeat. Do whatever you',
+                                onPressed: () {
+                                  // Action to perform when button is pressed
+                                },
+                              );
+                            },
+                          ),
+                        ),
                       ],
                     ),
                   ),
