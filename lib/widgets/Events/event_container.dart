@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 
 class EventContainer extends StatelessWidget {
-  const EventContainer({super.key});
+  final String title;
+  final String startTime;
+  final String type;
+
+  const EventContainer({super.key, required this.title, required this.startTime, required this.type});
 
   @override
   Widget build(BuildContext context) {
@@ -14,12 +18,12 @@ class EventContainer extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              iconContainer("co"),
+              iconContainer(type),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Title",
+                    title,
                     style: TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
                   ),
                   SizedBox(height: 5),
@@ -29,10 +33,10 @@ class EventContainer extends StatelessWidget {
                         border: Border.all(
                           color: Colors.black,
                         )),
-                    child: const Padding(
+                    child:  Padding(
                       padding:
                           const EdgeInsets.symmetric(vertical: 4, horizontal: 6),
-                      child: Text("10 March @ 17:00"),
+                      child: Text(startTime.substring(0,10)),
                     ),
                   )
                 ],
