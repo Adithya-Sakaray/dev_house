@@ -7,9 +7,9 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:shared_preferences/shared_preferences.dart";
 
-class LoginChecker  extends StatelessWidget {
+class LoginChecker extends StatelessWidget {
   final bool loggedIn;
-  const LoginChecker ({super.key, required this.loggedIn});
+  const LoginChecker({super.key, required this.loggedIn});
 
   @override
   Widget build(BuildContext context) {
@@ -22,8 +22,8 @@ class LoginChecker  extends StatelessWidget {
     );
   }
 
-  Widget checkLogin()  {
-    if(loggedIn){
+  Widget checkLogin() {
+    if (loggedIn) {
       return const HomeScreen();
     } else {
       return const LoginOrRegisterScreen();

@@ -23,122 +23,129 @@ class _FeedPageState extends State<FeedPage>
   int selectedButtonIndexg = 0;
   int selectedTabIndex = 0;
 
-
-
-
   @override
   Widget build(BuildContext context) {
-    final FeedPageController feedPageController = Get.find<FeedPageController>();
+    final FeedPageController feedPageController =
+        Get.find<FeedPageController>();
     return SingleChildScrollView(
-        child: Column(
-          children: [
-            Container(
-              padding: const EdgeInsets.only(
-                left: 4.0,
-                right: 4.0,
-                bottom: 4.70,
-              ),
-              margin: const EdgeInsets.only(top: 10.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  const SizedBox(
-                    width: 13,
-                    height: 35,
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      setState(() {
-                        selectedButtonIndexg = 0;
-                      });
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: selectedButtonIndexg == 0
-                          ? const Color.fromARGB(255, 211, 233, 251)
-                          : Colors.grey.shade200,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                      ),
-                      minimumSize: const Size(0, 35),
-                      elevation: 0,
-                    ),
-                    child: const Text(
-                      'Student',
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(width: 13.5),
-                  ElevatedButton(
-                    onPressed: () {
-                      setState(() {
-                        selectedButtonIndexg = 1;
-                      });
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: selectedButtonIndexg == 1
-                          ? const Color.fromARGB(255, 211, 233, 251)
-                          : Colors.grey.shade200,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                      ),
-                      minimumSize: const Size(0, 35),
-                      elevation: 0, // Remove the elevation shadow
-                    ),
-                    child: const Text(
-                      'Professional',
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(width: 13.5),
-                  ElevatedButton(
-                    onPressed: () {
-                      setState(() {
-                        selectedButtonIndexg = 2;
-                      });
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: selectedButtonIndexg == 2
-                          ? const Color.fromARGB(255, 211, 233, 251)
-                          : Colors.grey.shade200,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                      ),
-                      minimumSize: const Size(0, 35),
-                      elevation: 0, // Remove the elevation shadow
-                    ),
-                    child: const Text(
-                      'Recruiter',
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+      child: Column(
+        children: [
+          Container(
+            padding: const EdgeInsets.only(
+              left: 4.0,
+              right: 4.0,
+              bottom: 4.70,
             ),
-            // if (selectedButtonIndex == 0) const StudentFeed(),
-            // if (selectedButtonIndex == 1) const ProfessionalFeed(),
-            // if (selectedButtonIndex == 2) const RecruiterFeed(),
-            displayFeeds(selectedButtonIndexg, feedPageController.studentPost, feedPageController.professionalPost, feedPageController.recruiterPost),
-          ],
-        ),
-      );
+            margin: const EdgeInsets.only(top: 10.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                const SizedBox(
+                  width: 13,
+                  height: 35,
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      selectedButtonIndexg = 0;
+                    });
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: selectedButtonIndexg == 0
+                        ? const Color.fromARGB(255, 211, 233, 251)
+                        : Colors.grey.shade200,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20.0),
+                    ),
+                    minimumSize: const Size(0, 35),
+                    elevation: 0,
+                  ),
+                  child: const Text(
+                    'Student',
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 13.5),
+                ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      selectedButtonIndexg = 1;
+                    });
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: selectedButtonIndexg == 1
+                        ? const Color.fromARGB(255, 211, 233, 251)
+                        : Colors.grey.shade200,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20.0),
+                    ),
+                    minimumSize: const Size(0, 35),
+                    elevation: 0, // Remove the elevation shadow
+                  ),
+                  child: const Text(
+                    'Professional',
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 13.5),
+                ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      selectedButtonIndexg = 2;
+                    });
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: selectedButtonIndexg == 2
+                        ? const Color.fromARGB(255, 211, 233, 251)
+                        : Colors.grey.shade200,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20.0),
+                    ),
+                    minimumSize: const Size(0, 35),
+                    elevation: 0, // Remove the elevation shadow
+                  ),
+                  child: const Text(
+                    'Recruiter',
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          // if (selectedButtonIndex == 0) const StudentFeed(),
+          // if (selectedButtonIndex == 1) const ProfessionalFeed(),
+          // if (selectedButtonIndex == 2) const RecruiterFeed(),
+          displayFeeds(
+              selectedButtonIndexg,
+              feedPageController.studentPost,
+              feedPageController.professionalPost,
+              feedPageController.recruiterPost),
+        ],
+      ),
+    );
   }
 
-  Widget displayFeeds(int index,RxList studentPosts,RxList professionalPosts, RxList recruiterPosts) {
+  Widget displayFeeds(int index, RxList studentPosts, RxList professionalPosts,
+      RxList recruiterPosts) {
     if (index == 0) {
-      return  StudentFeed(studentPosts: studentPosts,);
+      return StudentFeed(
+        studentPosts: studentPosts,
+      );
     } else if (index == 1) {
-      return  ProfessionalFeed(professionalPosts: professionalPosts);
+      return ProfessionalFeed(professionalPosts: professionalPosts);
     } else {
-      return  RecruiterFeed(recruiterPosts: recruiterPosts,);
+      return RecruiterFeed(
+        recruiterPosts: recruiterPosts,
+      );
     }
   }
 }

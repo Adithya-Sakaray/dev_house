@@ -19,14 +19,14 @@ class JobDetailScreen extends StatefulWidget {
 
   const JobDetailScreen(
       {Key? key,
-        required this.companyName,
-        required this.role,
-        this.salary,
-        required this.type,
-        required this.location,
-        required this.skills,
-        required this.jobDesc,
-        required this.companyDesc})
+      required this.companyName,
+      required this.role,
+      this.salary,
+      required this.type,
+      required this.location,
+      required this.skills,
+      required this.jobDesc,
+      required this.companyDesc})
       : super(key: key);
 
   @override
@@ -80,7 +80,7 @@ class _JobDetailState extends State<JobDetailScreen> {
             // Company name
             Text(
               widget.companyName,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 15,
                 color: Colors.grey,
                 fontWeight: FontWeight.w500,
@@ -91,7 +91,7 @@ class _JobDetailState extends State<JobDetailScreen> {
             // Job role
             Text(
               widget.role,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.w600,
               ),
@@ -102,7 +102,8 @@ class _JobDetailState extends State<JobDetailScreen> {
             Center(
               child: Wrap(
                 spacing: 6.0,
-                children: skillList.map((skill) => Chip(label: Text(skill))).toList(),
+                children:
+                    skillList.map((skill) => Chip(label: Text(skill))).toList(),
               ),
             ),
             const SizedBox(height: 16),
@@ -227,7 +228,7 @@ class _JobDetailState extends State<JobDetailScreen> {
             const SizedBox(height: 10),
             Text(
               widget.jobDesc,
-              style: TextStyle(fontSize: 14),
+              style: const TextStyle(fontSize: 14),
             ),
             const SizedBox(height: 25),
 
@@ -242,7 +243,7 @@ class _JobDetailState extends State<JobDetailScreen> {
             const SizedBox(height: 10),
             Text(
               widget.companyDesc,
-              style: TextStyle(fontSize: 14),
+              style: const TextStyle(fontSize: 14),
             ),
             const SizedBox(height: 15),
             // Apply button

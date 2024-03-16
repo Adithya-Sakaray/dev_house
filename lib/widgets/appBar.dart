@@ -1,3 +1,4 @@
+import "package:dev_house/screens/message_screen.dart";
 import "package:flutter/material.dart";
 
 import "../screens/web_view.dart";
@@ -69,7 +70,8 @@ AppBar app(BuildContext context, int selectedIndex) {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const WebView()),
+                  MaterialPageRoute(
+                      builder: (context) => const MessageScreen()),
                 );
               },
             )

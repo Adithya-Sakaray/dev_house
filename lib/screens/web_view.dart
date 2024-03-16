@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class WebView extends StatefulWidget {
-  const WebView({super.key});
+  final String? appBarTitle;
+  const WebView({super.key, this.appBarTitle});
 
   @override
   State<WebView> createState() => _WebViewState();
@@ -18,7 +19,7 @@ class _WebViewState extends State<WebView> {
     MediaQueryData mediaQueryData = MediaQuery.of(context);
     return Scaffold(
         appBar: AppBar(
-          title: const Text("SD"),
+          title: Text(widget.appBarTitle!),
         ),
         body: SingleChildScrollView(
           child: Column(

@@ -1,4 +1,3 @@
-import 'package:dev_house/screens/job_detail_screen.dart';
 import 'package:flutter/material.dart';
 
 class CustomTile_J extends StatefulWidget {
@@ -62,7 +61,8 @@ class _CustomTileState extends State<CustomTile_J> {
                   ),
                   child: Text(
                     widget.title,
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                    style: const TextStyle(
+                        fontSize: 16, fontWeight: FontWeight.w600),
                   ),
                 ),
               ),
