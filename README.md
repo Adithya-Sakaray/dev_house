@@ -1,4 +1,4 @@
-# Women Empowerment Mobile Application
+# Women Empowerment Mobile Application : MentHer
 
 Welcome to our women-centric mobile application designed to empower and uplift women. Despite persistent gender disparities, particularly in STEM fields and leadership roles, technology offers avenues for bridging these gaps. Our platform facilitates community building, mentorship, and access to resources such as job opportunities, contests, and courses tailored for women. Join us in celebrating achievements and fostering collaboration for a more inclusive future.
 
